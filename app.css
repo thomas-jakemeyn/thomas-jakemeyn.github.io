@@ -19,13 +19,16 @@
 }
 
 .board .lane {
-    min-height: 50px;
+    width: 250px;
+    min-height: 75px;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+    background-color: #ddd;
 }
 
-.board .lane:nth-child(even) {
-    background-color: lightblue;
-}
-
-.board .lane:nth-child(odd) {
-    background-color: lavender;
+.board .lane .task {
+    padding: 3px;
+    cursor: hand;
+    background-color: white;
 }

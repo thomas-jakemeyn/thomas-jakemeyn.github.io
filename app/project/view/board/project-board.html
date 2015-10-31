@@ -1,9 +1,8 @@
-<h1>Board</h1>
-
 <div class="board">
     <div class="lane" dragula="'lane'" dragula-scope='$parent' ng-repeat="state in project.flow.states">
         <div ng-repeat="story in project.backlog"
              ng-if="isNumber(story.sprint) && story.state === state"
-             ng-bind="story.title"></div>
+             ng-bind="story.title"
+             class="task"></div>
     </div>
 </div>
