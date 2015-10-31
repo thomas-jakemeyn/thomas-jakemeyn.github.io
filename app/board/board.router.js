@@ -2,8 +2,8 @@
 
 export default function configureRouter($stateProvider) {
     $stateProvider
-            .state('boards', {
+            .state('board-list', {
                 url: '/boards',
-                templateUrl: 'app/board/boards.html'
+                templateUrl: 'app/board/board-list.html'
             });
 }

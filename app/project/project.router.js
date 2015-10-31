@@ -2,7 +2,7 @@
 
 export default function ($stateProvider) {
     $stateProvider
-            .state('projects', {
+            .state('project-list', {
                 url: '/projects',
                 templateUrl: 'app/project/project-list.html',
                 controller: 'ProjectListController',
