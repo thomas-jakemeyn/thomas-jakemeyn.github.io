@@ -8,7 +8,8 @@ export default class API {
 
     getProjects() {
         return this.promisify([{
-            title: 'SCRUM-light'
+            id: 0,
+            title: 'scrum-light'
         }]);
     }
 
