@@ -4,6 +4,7 @@ class ProjectViewController {
 
     constructor($scope, project) {
         $scope.project = project;
+        $scope.isNumber = angular.isNumber;
     }
 }
 

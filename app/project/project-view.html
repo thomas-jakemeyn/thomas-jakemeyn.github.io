@@ -1,5 +1,15 @@
 <h1>{{project.title}}</h1>
 
-<ul>
-    <li ng-repeat="story in project.backlog">{{story.title}}</li>
-</ul>
+<div ng-repeat="sprint in project.sprints">
+    <h2>{{sprint.title}}</h2>
+    <ul>
+        <li ng-repeat="story in project.backlog" ng-if="story.sprint === sprint.id">{{story.title}}</li>
+    </ul>
+</div>
+
+<div>
+    <h2>Backlog</h2>
+    <ul>
+        <li ng-repeat="story in project.backlog" ng-if="isNumber(story.sprint)">{{story.title}}</li>
+    </ul>
+</div>
