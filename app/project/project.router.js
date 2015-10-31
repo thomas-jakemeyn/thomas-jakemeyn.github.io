@@ -1,6 +1,6 @@
 'use strict';
 
-export default function configureRouter($stateProvider) {
+export default function ($stateProvider) {
     $stateProvider
             .state('projects', {
                 url: '/projects',
