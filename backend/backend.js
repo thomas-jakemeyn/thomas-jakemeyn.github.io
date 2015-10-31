@@ -16,7 +16,14 @@ export default class API {
     getProject(projectId) {
         return this.promisify({
             id: projectId,
-            title: 'scrum-light'
+            title: 'scrum-light',
+            backlog: [{
+                id: 0,
+                title: 'As a user, I want to see a basic SCRUM board'
+            }, {
+                id: 1,
+                title: 'As a user, I want to create a new story'
+            }]
         });
     }
 
