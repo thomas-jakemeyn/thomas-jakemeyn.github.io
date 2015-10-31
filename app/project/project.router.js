@@ -4,6 +4,7 @@ export default function configureRouter($stateProvider) {
     $stateProvider
             .state('projects', {
                 url: '/projects',
-                templateUrl: 'app/project/projects.html'
+                templateUrl: 'app/project/projects.html',
+                controller: 'ProjectsController'
             });
 }
