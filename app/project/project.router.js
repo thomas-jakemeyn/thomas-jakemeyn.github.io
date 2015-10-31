@@ -21,5 +21,13 @@ export default function ($stateProvider) {
                         return projectService.getProject($stateParams.projectId);
                     }]
                 }
+            })
+            .state('project-backlog', {
+                parent: 'project-view',
+                templateUrl: 'app/project/project-backlog.html'
+            })
+            .state('project-board', {
+                parent: 'project-view',
+                templateUrl: 'app/project/project-board.html'
             });
 };

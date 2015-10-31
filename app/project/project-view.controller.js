@@ -2,10 +2,11 @@
 
 class ProjectViewController {
 
-    constructor($scope, project) {
+    constructor($scope, $state, project) {
         $scope.project = project;
         $scope.isNumber = angular.isNumber;
+        $state.transitionTo('project-backlog');
     }
 }
 
-export default ['$scope', 'project', ProjectViewController];
+export default ['$scope', '$state', 'project', ProjectViewController];
