@@ -51,5 +51,31 @@
   "github:jspm/nodelibs-util@0.1.0": {
     "util": "npm:util@^0.10.3"
   },
-  "github:bevacqua/angular-dragula@1.1.4": {}
+  "npm:dragula@3.5.2": {
+    "contra": "npm:contra@1.9.1",
+    "crossvent": "npm:crossvent@1.5.4"
+  },
+  "npm:contra@1.9.1": {
+    "atoa": "npm:atoa@1.0.0",
+    "ticky": "npm:ticky@1.0.0"
+  },
+  "npm:crossvent@1.5.4": {
+    "custom-event": "npm:custom-event@1.0.0",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "path": "github:jspm/nodelibs-path@^0.1.0",
+    "systemjs-json": "github:systemjs/plugin-json@^0.1.0",
+    "child_process": "github:jspm/nodelibs-child_process@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:ticky@1.0.0": {
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:atoa@1.0.0": {},
+  "npm:angular-dragula@1.1.3": {
+    "atoa": "npm:atoa@1.0.0",
+    "dragula": "npm:dragula@3.5.2",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:custom-event@1.0.0": {},
+  "github:jspm/nodelibs-child_process@0.1.0": {}
 }
