@@ -4,7 +4,7 @@ export default function ($stateProvider) {
     $stateProvider
             .state('project-list', {
                 url: '/projects',
-                templateUrl: 'app/project/project-list.html',
+                templateUrl: 'app/project/list/project-list.html',
                 controller: 'ProjectListController',
                 resolve: {
                     projects: ['projectService', function (projectService) {
@@ -14,7 +14,7 @@ export default function ($stateProvider) {
             })
             .state('project-view', {
                 url: '/projects/:projectId',
-                templateUrl: 'app/project/project-view.html',
+                templateUrl: 'app/project/view/project-view.html',
                 controller: 'ProjectViewController',
                 resolve: {
                     project: ['projectService', '$stateParams', function (projectService, $stateParams) {
@@ -24,10 +24,10 @@ export default function ($stateProvider) {
             })
             .state('project-backlog', {
                 parent: 'project-view',
-                templateUrl: 'app/project/project-backlog.html'
+                templateUrl: 'app/project/view/backlog/project-backlog.html'
             })
             .state('project-board', {
                 parent: 'project-view',
-                templateUrl: 'app/project/project-board.html'
+                templateUrl: 'app/project/view/board/project-board.html'
             });
 };
