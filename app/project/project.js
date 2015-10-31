@@ -3,7 +3,7 @@
 import angular from 'angular';
 import configureRouter from './project.router';
 import ProjectServiceFactory from './project.service';
-import ProjectsController from './projects.controller';
+import ProjectListController from './project-list.controller';
 
 var name = 'project';
 
@@ -11,7 +11,7 @@ function configure() {
     angular.module(name, [])
             .config(configureRouter)
             .factory('projectService', ProjectServiceFactory)
-            .controller('ProjectsController', ProjectsController);
+            .controller('ProjectListController', ProjectListController);
 }
 
 export default {
