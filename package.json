@@ -12,7 +12,8 @@
   "jspm": {
     "dependencies": {
       "angular": "github:angular/bower-angular@1.4.7",
-      "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
+      "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+      "bevacqua/angular-dragula": "github:bevacqua/angular-dragula@1.1.4",
       "bootstrap": "github:twbs/bootstrap@3.3.5",
       "font-awesome": "npm:font-awesome@4.4.0"
     },

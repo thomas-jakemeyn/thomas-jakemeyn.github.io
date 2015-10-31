@@ -1,0 +1,1 @@
+module.exports = require("github:bevacqua/angular-dragula@1.1.4/angular-dragula");
