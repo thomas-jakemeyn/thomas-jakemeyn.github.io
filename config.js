@@ -19,13 +19,13 @@ System.config({
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "backend": "backend/backend",
-    "board": "app/board/board",
+    "board": "app/board/board.module",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "core-js": "npm:core-js@1.2.3",
     "font-awesome": "npm:font-awesome@4.4.0",
     "functions": "components/function/function.utils",
-    "main-bar": "app/main-bar/main-bar",
-    "project": "app/project/project",
+    "main-bar": "app/main-bar/main-bar.module",
+    "project": "app/project/project.module",
     "github:angular-ui/ui-router@0.2.15": {
       "angular": "github:angular/bower-angular@1.4.7"
     },
