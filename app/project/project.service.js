@@ -11,6 +11,10 @@ class ProjectService {
     getProjects() {
         return this.backend.getProjects();
     }
+
+    getProject(projectId) {
+        return this.backend.getProject(projectId);
+    }
 }
 
 export default ['backend', functions.factoryOf(ProjectService)];

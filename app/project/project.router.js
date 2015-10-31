@@ -11,5 +11,15 @@ export default function ($stateProvider) {
                         return projectService.getProjects();
                     }]
                 }
+            })
+            .state('project-view', {
+                url: '/projects/:projectId',
+                templateUrl: 'app/project/project-view.html',
+                controller: 'ProjectViewController',
+                resolve: {
+                    project: ['projectService', '$stateParams', function (projectService, $stateParams) {
+                        return projectService.getProject($stateParams.projectId);
+                    }]
+                }
             });
 };

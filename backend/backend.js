@@ -13,6 +13,13 @@ export default class API {
         }]);
     }
 
+    getProject(projectId) {
+        return this.promisify({
+            id: projectId,
+            title: 'scrum-light'
+        });
+    }
+
     promisify(returnValue) {
         return new Promise(function (resolve) {
             resolve(returnValue);
