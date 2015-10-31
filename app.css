@@ -17,3 +17,15 @@
     font-size: 38px;
     margin-top: 10px;
 }
+
+.board .lane {
+    min-height: 50px;
+}
+
+.board .lane:nth-child(even) {
+    background-color: lightblue;
+}
+
+.board .lane:nth-child(odd) {
+    background-color: lavender;
+}
