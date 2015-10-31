@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real Impact Analytics</title>
+
+    <!-- Suppress browser request for favicon.ico -->
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" type="text/css" href="jspm_packages/github/twbs/bootstrap@3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="jspm_packages/npm/font-awesome@4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body>
+<div main-bar></div>
+<div ui-view></div>
+
+<!-- Display splash screen while the application is bootstrapping -->
+<div class="splash" ng-show="false">
+    <div class="message">Real Impact Analytics</div>
+    <i class="fa fa-spinner fa-spin"></i>
+</div>
+
+<!-- Set up JSPM -->
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+
+<!-- Bootstrap the application -->
+<script>
+    System.import("./favicon.js");
+    System.import("app");
+</script>
+</body>
+</html>
