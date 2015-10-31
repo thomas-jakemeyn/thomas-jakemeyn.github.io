@@ -13,6 +13,7 @@ export default function ($stateProvider) {
                 }
             })
             .state('project-view', {
+                abstract: true,
                 url: '/projects/:projectId',
                 templateUrl: 'app/project/view/project-view.html',
                 controller: 'ProjectViewController',
@@ -23,10 +24,12 @@ export default function ($stateProvider) {
                 }
             })
             .state('project-backlog', {
+                url: '/backlog',
                 parent: 'project-view',
                 templateUrl: 'app/project/view/backlog/project-backlog.html'
             })
             .state('project-board', {
+                url: '/board',
                 parent: 'project-view',
                 templateUrl: 'app/project/view/board/project-board.html'
             });
