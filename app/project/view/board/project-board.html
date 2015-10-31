@@ -1,1 +1,8 @@
 <h1>Board</h1>
+
+<div ng-repeat="state in project.flow.states">
+    <h3>{{state}}</h3>
+    <ul>
+        <li ng-repeat="story in project.backlog" ng-if="isNumber(story.sprint) && story.state === state">{{story.title}}</li>
+    </ul>
+</div>

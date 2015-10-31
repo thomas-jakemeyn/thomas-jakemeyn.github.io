@@ -17,18 +17,29 @@ export default class API {
         return this.promisify({
             id: projectId,
             title: 'scrum-light',
+            backlog: [{
+                id: 0,
+                title: 'As a user, I want to see a basic SCRUM board',
+                state: 'toDo',
+                sprint: 0
+            }, {
+                id: 1,
+                title: 'As a user, I want to create a new story',
+                state: 'toDo'
+            }],
             sprints: [{
                 id: 0,
                 title: 'Sprint 1'
             }],
-            backlog: [{
-                id: 0,
-                title: 'As a user, I want to see a basic SCRUM board',
-                sprint: 0
-            }, {
-                id: 1,
-                title: 'As a user, I want to create a new story'
-            }]
+            flow: {
+                states: ['toDo', 'inProgress', 'resolved', 'done'],
+                transitions: {
+                    toDo: ['inProgress'],
+                    inProgress: ['resolved'],
+                    resolved: ['done'],
+                    done: ['toDo']
+                }
+            }
         });
     }
 
