@@ -2,6 +2,7 @@
 
 import angular from 'angular';
 import configureRouter from './project.router';
+import ProjectServiceFactory from './project.service';
 import ProjectsController from './projects.controller';
 
 var name = 'project';
@@ -9,6 +10,7 @@ var name = 'project';
 function configure() {
     angular.module(name, [])
             .config(configureRouter)
+            .factory('projectService', ProjectServiceFactory)
             .controller('ProjectsController', ProjectsController);
 }
 

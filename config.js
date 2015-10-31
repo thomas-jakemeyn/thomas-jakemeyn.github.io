@@ -23,6 +23,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "core-js": "npm:core-js@1.2.3",
     "font-awesome": "npm:font-awesome@4.4.0",
+    "functions": "components/function/function.utils",
     "main-bar": "app/main-bar/main-bar",
     "project": "app/project/project",
     "github:angular-ui/ui-router@0.2.15": {

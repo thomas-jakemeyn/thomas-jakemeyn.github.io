@@ -1,4 +1,12 @@
 'use strict';
 
-export default ['$scope', function projectsController($scope) {
-}];
+class ProjectsController {
+
+    constructor($scope, projects) {
+        this.$scope = $scope;
+        this.projects = projects;
+        console.log(projects);
+    }
+}
+
+export default ['$scope', 'projects', ProjectsController];
