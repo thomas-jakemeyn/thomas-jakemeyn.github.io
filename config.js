@@ -19,7 +19,6 @@ System.config({
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "backend": "backend/backend",
-    "board": "app/board/board.module",
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "core-js": "npm:core-js@1.2.3",
     "font-awesome": "npm:font-awesome@4.4.0",
