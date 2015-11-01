@@ -1,19 +1,19 @@
-<div ng-repeat="sprint in project.sprints" id="{{sprint.id}}" class="sprint" dragula="'droppable'" dragula-scope="$parent">
+<div ng-repeat="sprint in project.sprints">
     <h2>{{sprint.title}}</h2>
-
-    <div ng-repeat="sprintTask in project.backlog"
-         ng-if="sprintTask.sprint === sprint.id"
-         ng-bind="sprintTask.title"
-         id="{{sprintTask.id}}"
-         class="task draggable"></div>
+    <div id="{{sprint.id}}" class="sprint" dragula="'droppable'" dragula-scope="$parent">
+        <div ng-repeat="sprintTask in project.backlog"
+             ng-if="sprintTask.sprint === sprint.id"
+             ng-bind="sprintTask.title"
+             id="{{sprintTask.id}}"
+             class="task"></div>
+    </div>
 </div>
 
+<h2>Backlog</h2>
 <div class="backlog" dragula="'droppable'">
-    <h2>Backlog</h2>
-
     <div ng-repeat="backlogTask in project.backlog"
          ng-if="!isDefined(backlogTask.sprint)"
          ng-bind="backlogTask.title"
          id="{{backlogTask.id}}"
-         class="task draggable"></div>
+         class="task"></div>
 </div>

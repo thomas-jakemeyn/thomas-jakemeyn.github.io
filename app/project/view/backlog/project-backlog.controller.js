@@ -22,11 +22,6 @@ class ProjectBacklogController {
         this.$scope.$on('droppable.drop', (event, task, targetSprint, sourceSprint, beforeTask) => {
             this.onTaskDropped(task, targetSprint, beforeTask);
         });
-        this.dragulaService.options(this.$scope, 'droppable', {
-            invalid: function (element) {
-                return !element.classList.contains('draggable');
-            }
-        });
     }
 
     onTaskDropped(task, targetSprint, beforeTask) {
