@@ -4,15 +4,17 @@ import angular from 'angular';
 
 class ProjectBacklogController {
 
-    constructor($scope, dragulaService) {
+    constructor($scope, projectService, dragulaService) {
         this.$scope = $scope;
+        this.project = $scope.project;
+        this.projectService = projectService;
         this.dragulaService = dragulaService;
         this.setUpDragAndDrop();
     }
 
     setUpDragAndDrop() {
         this.$scope.$on('droppable.drop', (event, task, targetSprint, sourceSprint, beforeTask) => {
-            this.onTaskDropped(task, targetSprint, sourceSprint, beforeTask);
+            this.onTaskDropped(task, targetSprint, beforeTask);
         });
         this.dragulaService.options(this.$scope, 'droppable', {
             invalid: function (element) {
@@ -21,13 +23,12 @@ class ProjectBacklogController {
         });
     }
 
-    onTaskDropped(task, targetSprint, sourceSprint, beforeTask) {
+    onTaskDropped(task, targetSprint, beforeTask) {
         var taskId = task.attr('id');
-        var sourceSprintId = sourceSprint.attr('id');
         var targetSprintId = targetSprint.attr('id');
         var beforeTaskId = beforeTask ? beforeTask.attr('id') : null;
-        console.log('Moved task ' + taskId + ' from sprint ' + sourceSprintId + ' to sprint ' + targetSprintId);
+        this.projectService.moveTaskToSprint(this.project, taskId, targetSprintId, beforeTaskId);
     }
 }
 
-export default ['$scope', 'dragulaService', ProjectBacklogController];
+export default ['$scope', 'projectService', 'dragulaService', ProjectBacklogController];

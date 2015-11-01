@@ -51,6 +51,10 @@ export default class API {
         });
     }
 
+    moveTaskToSprint(projectId, taskId, sprintId, beforeTaskId) {
+        return this.promisify({});
+    }
+
     promisify(returnValue) {
         return new Promise(function (resolve) {
             resolve(returnValue);

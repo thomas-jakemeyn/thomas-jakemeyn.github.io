@@ -4,8 +4,9 @@ import functions from 'functions';
 
 class ProjectService {
 
-    constructor(backend) {
+    constructor(backend, projectUtils) {
         this.backend = backend;
+        this.projectUtils = projectUtils;
     }
 
     getProjects() {
@@ -15,6 +16,13 @@ class ProjectService {
     getProject(projectId) {
         return this.backend.getProject(projectId);
     }
+
+    moveTaskToSprint(project, taskId, sprintId, beforeTaskId) {
+        this.backend.moveTaskToSprint(project.id, taskId, sprintId, beforeTaskId).then(() => {
+            var task = this.projectUtils.findTask(project, taskId);
+            task.sprint = sprintId;
+        });
+    }
 }
 
-export default ['backend', functions.factoryOf(ProjectService)];
+export default ['backend', 'projectUtils', functions.factoryOf(ProjectService)];

@@ -26,6 +26,7 @@ System.config({
     "functions": "components/function/function.utils",
     "main-bar": "app/main-bar/main-bar.module",
     "project": "app/project/project.module",
+    "project-utils": "app/project/project.utils",
     "uuid": "npm:uuid@2.0.1",
     "github:angular-ui/ui-router@0.2.15": {
       "angular": "github:angular/bower-angular@1.4.7"
