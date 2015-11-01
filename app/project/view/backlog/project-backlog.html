@@ -1,4 +1,4 @@
-<div ng-repeat="sprint in project.sprints" id="{{sprint.id}}" dragula="'droppable'" dragula-scope='$parent'>
+<div ng-repeat="sprint in project.sprints" id="{{sprint.id}}" dragula="'droppable'" dragula-scope="$parent">
     <h2>{{sprint.title}}</h2>
 
     <div ng-repeat="sprintTask in project.backlog"
@@ -8,7 +8,7 @@
          class="draggable"></div>
 </div>
 
-<div dragula="'droppable'">
+<div id="backlog" dragula="'droppable'">
     <h2>Backlog</h2>
 
     <div ng-repeat="backlogTask in project.backlog"

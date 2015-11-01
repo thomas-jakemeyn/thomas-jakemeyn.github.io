@@ -11,7 +11,7 @@ export default class API {
     getProjects() {
         return this.promisify([{
             id: this.generateId(),
-            title: 'scrum-light'
+            title: 'scrum-light-mvp'
         }]);
     }
 
@@ -19,6 +19,9 @@ export default class API {
         var sprints = [{
             id: this.generateId(),
             title: 'Sprint 1'
+        }, {
+            id: this.generateId(),
+            title: 'Sprint 2'
         }];
         var backlog = [{
             id: this.generateId(),
@@ -41,7 +44,7 @@ export default class API {
         };
         return this.promisify({
             id: projectId,
-            title: 'scrum-light',
+            title: 'scrum-light-mvp',
             backlog: backlog,
             sprints: sprints,
             flow: flow
