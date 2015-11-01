@@ -13,6 +13,12 @@ class ProjectBacklogController {
     }
 
     setUpDragAndDrop() {
+        this.$scope.$on('droppable.over', (event, task, droppable) => {
+            droppable.addClass('over');
+        });
+        this.$scope.$on('droppable.out', (event, task, droppable) => {
+            droppable.removeClass('over');
+        });
         this.$scope.$on('droppable.drop', (event, task, targetSprint, sourceSprint, beforeTask) => {
             this.onTaskDropped(task, targetSprint, beforeTask);
         });
