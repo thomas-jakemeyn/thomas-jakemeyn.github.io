@@ -5,6 +5,7 @@ import configureRouter from './project.router';
 import ProjectServiceFactory from './project.service';
 import ProjectListController from './list/project-list.controller';
 import ProjectViewController from './view/project-view.controller';
+import ProjectBoardController from './view/board/project-board.controller';
 
 var name = 'project';
 
@@ -13,7 +14,8 @@ function configure() {
             .config(configureRouter)
             .factory('projectService', ProjectServiceFactory)
             .controller('ProjectListController', ProjectListController)
-            .controller('ProjectViewController', ProjectViewController);
+            .controller('ProjectViewController', ProjectViewController)
+            .controller('ProjectBoardController', ProjectBoardController);
 }
 
 export default {

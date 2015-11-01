@@ -31,6 +31,7 @@ export default function ($stateProvider) {
             .state('project-board', {
                 url: '/board',
                 parent: 'project-view',
-                templateUrl: 'app/project/view/board/project-board.html'
+                templateUrl: 'app/project/view/board/project-board.html',
+                controller: 'ProjectBoardController'
             });
 };
