@@ -44,5 +44,6 @@
     margin: 6px;
     cursor: hand;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid #999;
+    color: #777;
 }
