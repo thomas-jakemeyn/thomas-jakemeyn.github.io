@@ -26,7 +26,8 @@ export default function ($stateProvider) {
             .state('project-backlog', {
                 url: '/backlog',
                 parent: 'project-view',
-                templateUrl: 'app/project/view/backlog/project-backlog.html'
+                templateUrl: 'app/project/view/backlog/project-backlog.html',
+                controller: 'ProjectBacklogController'
             })
             .state('project-board', {
                 url: '/board',
