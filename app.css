@@ -27,6 +27,10 @@
     background-color: #ddd;
 }
 
+.board .lane.over {
+    background-color: #eee;
+}
+
 .board .lane .task {
     padding: 3px;
     cursor: hand;
