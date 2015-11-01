@@ -19,7 +19,7 @@
 }
 
 .sprint, .backlog, .board .lane {
-    min-height: 75px;
+    min-height: 50px;
     margin: 10px;
     padding: 6px;
     background-color: #f8f8f8;
