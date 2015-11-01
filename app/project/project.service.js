@@ -19,8 +19,7 @@ class ProjectService {
 
     moveTaskToSprint(project, taskId, sprintId, beforeTaskId) {
         this.backend.moveTaskToSprint(project.id, taskId, sprintId, beforeTaskId).then(() => {
-            var task = this.projectUtils.findTask(project, taskId);
-            task.sprint = sprintId;
+            this.projectUtils.moveTaskToSprint(project, taskId, sprintId, beforeTaskId);
         });
     }
 }

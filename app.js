@@ -1,6 +1,6 @@
 'use strict';
 
-import API from 'backend';
+import backendFactory from 'backend';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angularDragula from 'angular-dragula';
@@ -11,9 +11,7 @@ import 'bootstrap';
 mainBarModule.configure();
 projectModule.configure();
 angular.module('main', ['ui.router', angularDragula(angular), mainBarModule.name, projectModule.name])
-        .factory('backend', function () {
-            return new API();
-        })
+        .factory('backend', backendFactory)
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('projects');
         });

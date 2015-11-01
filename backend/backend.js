@@ -1,12 +1,17 @@
 'use strict';
 
+import functions from 'functions';
 import uuid from 'uuid';
 
 /*
  This class is intended to be used as a backend mock.
  In a real environment, it would be a REST API exposed by an application server.
  */
-export default class API {
+class API {
+
+    constructor(projectUtils) {
+        this.projectUtils = projectUtils;
+    }
 
     getProjects() {
         return this.promisify([{
@@ -52,16 +57,26 @@ export default class API {
     }
 
     moveTaskToSprint(projectId, taskId, sprintId, beforeTaskId) {
-        return this.promisify({});
+        return new Promise(resolve => {
+            // TODO find project and use projectUtils
+            resolve();
+        });
     }
 
     promisify(returnValue) {
-        return new Promise(function (resolve) {
-            resolve(returnValue);
+        return new Promise(resolve => {
+            var serialized = this.serialize(returnValue);
+            resolve(serialized);
         });
+    }
+
+    serialize(object) {
+        return JSON.parse(JSON.stringify(object));
     }
 
     generateId() {
         return uuid.v1();
     }
 }
+
+export default ['projectUtils', functions.factoryOf(API)];
