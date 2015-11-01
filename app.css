@@ -26,6 +26,10 @@
     border: 1px solid #e7e7e7;
 }
 
+.sprint, .backlog {
+    width: 900px;
+}
+
 .board {
     clear: both;
 }
