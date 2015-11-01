@@ -18,20 +18,23 @@
     margin-top: 10px;
 }
 
-.board .lane {
-    width: 250px;
+.sprint, .backlog, .board .lane {
     min-height: 75px;
     margin: 10px;
     padding: 10px;
-    float: left;
     background-color: #ddd;
 }
 
-.board .lane.over {
+.board .lane {
+    width: 250px;
+    float: left;
+}
+
+.sprint.over, .backlog.over, .board .lane.over {
     background-color: #eee;
 }
 
-.board .lane .task {
+.board .lane .task, .sprint .task, .backlog .task {
     padding: 3px;
     cursor: hand;
     background-color: white;
