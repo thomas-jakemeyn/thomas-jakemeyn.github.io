@@ -2,10 +2,10 @@
 
 class ProjectViewController {
 
-    constructor($scope, $state, project) {
+    constructor($scope, project) {
         $scope.project = project;
         $scope.isDefined = angular.isDefined;
     }
 }
 
-export default ['$scope', '$state', 'project', ProjectViewController];
+export default ['$scope', 'project', ProjectViewController];
