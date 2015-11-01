@@ -41,10 +41,10 @@ class API {
         var flow = {
             states: ['toDo', 'inProgress', 'resolved', 'done'],
             transitions: {
-                toDo: ['inProgress'],
-                inProgress: ['resolved'],
-                resolved: ['done'],
-                done: ['toDo']
+                toDo: ['toDo', 'inProgress'],
+                inProgress: ['inProgress', 'resolved'],
+                resolved: ['resolved', 'done'],
+                done: ['done', 'toDo']
             }
         };
         return this.promisify({
