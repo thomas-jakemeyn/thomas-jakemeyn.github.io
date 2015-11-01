@@ -25,6 +25,10 @@
     background-color: #ddd;
 }
 
+.board {
+    clear: both;
+}
+
 .board .lane {
     width: 250px;
     float: left;
