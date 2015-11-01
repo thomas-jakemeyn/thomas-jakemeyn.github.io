@@ -22,6 +22,12 @@ class ProjectService {
             this.projectUtils.moveTaskToSprint(project, taskId, sprintId, beforeTaskId);
         });
     }
+
+    moveTaskToState(project, taskId, stateId, beforeTaskId) {
+        this.backend.moveTaskToState(project.id, taskId, stateId, beforeTaskId).then(() => {
+            this.projectUtils.moveTaskToState(project, taskId, stateId, beforeTaskId);
+        });
+    }
 }
 
 export default ['backend', 'projectUtils', functions.factoryOf(ProjectService)];

@@ -20,6 +20,11 @@ class ProjectUtils {
         this.moveTask(project, taskId, beforeTaskId);
     }
 
+    moveTaskToState(project, taskId, stateId, beforeTaskId) {
+        var task = this.findTask(project, taskId);
+        task.state = stateId;
+    }
+
     moveTask(project, taskId, beforeTaskId) {
         var tasks = project.backlog;
         var fromIndex = this.findTaskIndex(project, taskId);

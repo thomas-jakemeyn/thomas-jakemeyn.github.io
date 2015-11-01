@@ -21,7 +21,7 @@ class ProjectBoardController {
                 lane.removeClass('over');
             });
             this.$scope.$on(sprint.id + '.drop', (event, task, targetLane, sourceLane, beforeTask) => {
-                this.onTaskDropped(task, targetLane, sourceLane, beforeTask);
+                this.onTaskDropped(task, targetLane, beforeTask);
             });
             this.dragulaService.options(this.$scope, sprint.id, {
                 accepts: (task, targetLane, sourceLane) => {
@@ -31,18 +31,17 @@ class ProjectBoardController {
         });
     }
 
-    onTaskDropped(task, targetLane, sourceLane, beforeTask) {
+    onTaskDropped(task, targetLane, beforeTask) {
         var taskId = task.attr('id');
-        var sourceLaneId = sourceLane.attr('id');
-        var targetLaneId = targetLane.attr('id');
+        var stateId = targetLane.attr('id');
         var beforeTaskId = beforeTask ? beforeTask.attr('id') : null;
-        console.log('Moved task ' + taskId + ' from lane ' + sourceLaneId + ' to lane ' + targetLaneId);
+        this.projectService.moveTaskToState(this.project, taskId, stateId, beforeTaskId);
     }
 
     isValidTransition(sourceLane, targetLane) {
-        var sourceLaneId = angular.element(sourceLane).attr('id');
-        var targetLaneId = angular.element(targetLane).attr('id');
-        return this.project.flow.transitions[sourceLaneId].indexOf(targetLaneId) >= 0;
+        var sourceStateId = angular.element(sourceLane).attr('id');
+        var targetStateId = angular.element(targetLane).attr('id');
+        return this.project.flow.transitions[sourceStateId].indexOf(targetStateId) >= 0;
     }
 }
 

@@ -63,6 +63,13 @@ class API {
         });
     }
 
+    moveTaskToState(projectId, taskId, stateId, beforeTaskId) {
+        return new Promise(resolve => {
+            // TODO find project and use projectUtils
+            resolve();
+        });
+    }
+
     promisify(returnValue) {
         return new Promise(resolve => {
             var serialized = this.serialize(returnValue);
