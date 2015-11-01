@@ -7,20 +7,40 @@ class ProjectUtils {
     moveTaskToSprint(project, taskId, sprintId, beforeTaskId) {
         var task = this.findTask(project, taskId);
         task.sprint = sprintId;
+
+        if (sprintId && !beforeTaskId) {
+            var sprints = project.sprints;
+            var sprintIndex = this.findSprintIndex(project, sprintId) + 1;
+            while (sprintIndex < sprints.length && !beforeTaskId) {
+                task = this.findFirstTaskForSprint(project, sprints[sprintIndex].id);
+                beforeTaskId = task ? task.id : null;
+                sprintIndex++;
+            }
+        }
         this.moveTask(project, taskId, beforeTaskId);
     }
 
     moveTask(project, taskId, beforeTaskId) {
-        var task = this.findTask(project, taskId);
-        var beforeTask = beforeTaskId ? this.findTask(project, beforeTaskId) : null;
         var tasks = project.backlog;
-        var fromIndex = tasks.indexOf(task);
-        var toIndex = beforeTask ? tasks.indexOf(beforeTask) : tasks.length - 1;
+        var fromIndex = this.findTaskIndex(project, taskId);
+        var toIndex = beforeTaskId ? this.findTaskIndex(project, beforeTaskId) : tasks.length - 1;
         tasks.splice(toIndex, 0, tasks.splice(fromIndex, 1)[0]);
     }
 
     findTask(project, taskId) {
         return project.backlog.find(task => task.id === taskId);
+    }
+
+    findTaskIndex(project, taskId) {
+        return project.backlog.findIndex(task => task.id === taskId);
+    }
+
+    findFirstTaskForSprint(project, sprintId) {
+        return project.backlog.find(task => task.sprint === sprintId);
+    }
+
+    findSprintIndex(project, sprintId) {
+        return project.sprints.findIndex(sprint => sprint.id === sprintId);
     }
 }
 
