@@ -6,17 +6,26 @@ class ProjectBoardController {
 
     constructor($scope, projectService, dragulaService) {
         this.$scope = $scope;
+        this.project = $scope.project;
         this.projectService = projectService;
         this.dragulaService = dragulaService;
         this.setUpDragAndDrop();
     }
 
     setUpDragAndDrop() {
-        this.$scope.$on('lane.over', this.onLaneHovered);
-        this.$scope.$on('lane.out', this.onLaneExited);
-        this.$scope.$on('lane.drop', this.onTaskDropped);
+        this.$scope.$on('lane.over', (event, task, lane) => {
+            this.onLaneHovered(event, task, lane);
+        });
+        this.$scope.$on('lane.out', (event, task, lane) => {
+            this.onLaneExited(event, task, lane);
+        });
+        this.$scope.$on('lane.drop', (event, task, targetLane, sourceLane, beforeTask) => {
+            this.onTaskDropped(event, task, targetLane, sourceLane, beforeTask);
+        });
         this.dragulaService.options(this.$scope, 'lane', {
-            accepts: this.canTaskBeDropped
+            accepts: (task, targetLane, sourceLane) => {
+                return this.canTaskBeDropped(task, targetLane, sourceLane);
+            }
         });
     }
 
@@ -37,11 +46,10 @@ class ProjectBoardController {
     }
 
     canTaskBeDropped(task, targetLane, sourceLane) {
-        var taskId = angular.element(task).attr('id');
         var sourceLaneId = angular.element(sourceLane).attr('id');
         var targetLaneId = angular.element(targetLane).attr('id');
-        console.log('Task ' + taskId + ' can be dropped from lane ' + sourceLaneId + ' to lane ' + targetLaneId);
-        return true;
+        var isValidTransition = this.project.flow.transitions[sourceLaneId].indexOf(targetLaneId) >= 0;
+        return isValidTransition;
     }
 }
 
