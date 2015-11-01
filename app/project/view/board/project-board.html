@@ -1,5 +1,5 @@
 <div class="board">
-    <div ng-repeat="state in project.flow.states" id="{{state}}" class="lane" dragula="'lane'" dragula-scope="$parent">
+    <div ng-repeat="state in project.flow.states" id="{{state}}" class="lane" dragula="'droppable'" dragula-scope="$parent">
         <div ng-repeat="task in project.backlog"
              ng-if="isDefined(task.sprint) && task.state === state"
              ng-bind="task.title"

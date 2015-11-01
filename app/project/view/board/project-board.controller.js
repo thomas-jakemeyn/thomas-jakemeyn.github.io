@@ -13,28 +13,14 @@ class ProjectBoardController {
     }
 
     setUpDragAndDrop() {
-        this.$scope.$on('lane.over', (event, task, lane) => {
-            this.onLaneHovered(lane);
-        });
-        this.$scope.$on('lane.out', (event, task, lane) => {
-            this.onLaneExited(lane);
-        });
-        this.$scope.$on('lane.drop', (event, task, targetLane, sourceLane, beforeTask) => {
+        this.$scope.$on('droppable.drop', (event, task, targetLane, sourceLane, beforeTask) => {
             this.onTaskDropped(task, targetLane, sourceLane, beforeTask);
         });
-        this.dragulaService.options(this.$scope, 'lane', {
+        this.dragulaService.options(this.$scope, 'droppable', {
             accepts: (task, targetLane, sourceLane) => {
                 return this.isValidTransition(sourceLane, targetLane);
             }
         });
-    }
-
-    onLaneHovered(lane) {
-        lane.addClass('over');
-    }
-
-    onLaneExited(lane) {
-        lane.removeClass('over');
     }
 
     onTaskDropped(task, targetLane, sourceLane, beforeTask) {
