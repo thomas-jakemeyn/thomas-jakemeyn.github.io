@@ -3,12 +3,16 @@
 class ProjectBoardController {
 
     constructor($scope) {
-        $scope.$on('lane.over', function (e, task, lane) {
-            lane.addClass('over');
-        });
-        $scope.$on('lane.out', function (e, task, lane) {
-            lane.removeClass('over');
-        });
+        $scope.$on('lane.over', this.onLaneHovered);
+        $scope.$on('lane.out', this.onLaneExited);
+    }
+
+    onLaneHovered(event, task, lane) {
+        lane.addClass('over');
+    }
+
+    onLaneExited(event, task, lane) {
+        lane.removeClass('over');
     }
 }
 
