@@ -21,8 +21,9 @@
 .sprint, .backlog, .board .lane {
     min-height: 75px;
     margin: 10px;
-    padding: 10px;
-    background-color: #ddd;
+    padding: 6px;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
 }
 
 .board {
@@ -35,11 +36,13 @@
 }
 
 .sprint.over, .backlog.over, .board .lane.over {
-    background-color: #eee;
+    background-color: #f1f1f1;
 }
 
 .board .lane .task, .sprint .task, .backlog .task {
-    padding: 3px;
+    padding: 6px;
+    margin: 6px;
     cursor: hand;
     background-color: white;
+    border: 1px solid black;
 }
