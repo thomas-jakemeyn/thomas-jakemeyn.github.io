@@ -46,8 +46,11 @@
 .board .lane .task, .sprint .task, .backlog .task {
     padding: 6px;
     margin: 6px;
-    cursor: hand;
     background-color: white;
     border: 1px solid #999;
     color: #777;
+}
+
+.board .lane .task:hover, .sprint .task:hover, .backlog .task:hover {
+    cursor: move;
 }
