@@ -4,7 +4,7 @@ class ProjectViewController {
 
     constructor($scope, $state, project) {
         $scope.project = project;
-        $scope.isNumber = angular.isNumber;
+        $scope.isDefined = angular.isDefined;
     }
 }
 

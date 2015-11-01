@@ -8,6 +8,6 @@
 <div>
     <h2>Backlog</h2>
     <ul>
-        <li ng-repeat="story in project.backlog" ng-if="isNumber(story.sprint)">{{story.title}}</li>
+        <li ng-repeat="story in project.backlog" ng-if="!isDefined(story.sprint)">{{story.title}}</li>
     </ul>
 </div>
