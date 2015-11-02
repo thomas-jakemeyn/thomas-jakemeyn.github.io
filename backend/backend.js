@@ -23,10 +23,10 @@ class API {
     getProject(projectId) {
         var sprints = [{
             id: this.generateId(),
-            title: 'Sprint 2'
+            title: 'Sprint 1'
         }, {
             id: this.generateId(),
-            title: 'Sprint 1'
+            title: 'Sprint 2'
         }];
         var backlog = [{
             id: this.generateId(),
