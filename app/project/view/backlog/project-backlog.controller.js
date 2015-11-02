@@ -19,16 +19,16 @@ class ProjectBacklogController {
         this.$scope.$on('droppable.out', (event, task, droppable) => {
             droppable.removeClass('over');
         });
-        this.$scope.$on('droppable.drop', (event, task, targetSprint, sourceSprint, beforeTask) => {
-            this.onTaskDropped(task, targetSprint, beforeTask);
+        this.$scope.$on('droppable.drop', (event, task, targetSprint, sourceSprint, nextTask) => {
+            this.onTaskDropped(task, nextTask, targetSprint);
         });
     }
 
-    onTaskDropped(task, targetSprint, beforeTask) {
+    onTaskDropped(task, nextTask, sprint) {
         var taskId = task.attr('id');
-        var targetSprintId = targetSprint.attr('id');
-        var beforeTaskId = beforeTask ? beforeTask.attr('id') : null;
-        this.projectService.moveTaskToSprint(this.project, taskId, targetSprintId, beforeTaskId);
+        var nextTaskId = nextTask ? nextTask.attr('id') : null;
+        var sprintId = sprint.attr('id');
+        this.projectService.changeTaskPriority(this.project, taskId, nextTaskId, sprintId);
     }
 }
 

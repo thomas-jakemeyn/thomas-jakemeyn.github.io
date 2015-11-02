@@ -17,9 +17,9 @@ class ProjectService {
         return this.backend.getProject(projectId);
     }
 
-    moveTaskToSprint(project, taskId, sprintId, beforeTaskId) {
-        this.backend.moveTaskToSprint(project.id, taskId, sprintId, beforeTaskId).then(() => {
-            this.projectUtils.moveTaskToSprint(project, taskId, sprintId, beforeTaskId);
+    changeTaskPriority(project, taskId, nextTaskId, sprintId) {
+        this.backend.changeTaskPriority(project.id, taskId, nextTaskId, sprintId).then(() => {
+            this.projectUtils.changeTaskPriority(project, taskId, nextTaskId, sprintId);
         });
     }
 
@@ -30,7 +30,7 @@ class ProjectService {
     }
 
     createTaskInBacklog(project, data) {
-        var beforeTaskId = this.projectUtils.findFirstTaskIndexNotInASprint(project);
+        var beforeTaskId = this.projectUtils.findFirstTaskIndexNotAssignedToSprint(project);
         data.beforeTaskId = beforeTaskId;
         this.backend.createTask(project.id, data).then(task => {
             this.projectUtils.insertNewTask(project, task, beforeTaskId);

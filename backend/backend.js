@@ -56,7 +56,7 @@ class API {
         });
     }
 
-    moveTaskToSprint(projectId, taskId, sprintId, beforeTaskId) {
+    changeTaskPriority(projectId, taskId, nextTaskId, sprintId) {
         return new Promise(resolve => {
             // TODO find project and use projectUtils
             resolve();
