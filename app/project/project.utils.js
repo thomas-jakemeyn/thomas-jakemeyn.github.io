@@ -12,8 +12,7 @@ class ProjectUtils {
             var sprints = project.sprints;
             var sprintIndex = this.findSprintIndex(project, sprintId) + 1;
             while (sprintIndex < sprints.length && !beforeTaskId) {
-                task = this.findFirstTaskForSprint(project, sprints[sprintIndex].id);
-                beforeTaskId = task ? task.id : null;
+                beforeTaskId = this.findFirstTaskIndexForSprint(project, sprints[sprintIndex].id);
                 sprintIndex++;
             }
         }
@@ -32,6 +31,12 @@ class ProjectUtils {
         tasks.splice(toIndex, 0, tasks.splice(fromIndex, 1)[0]);
     }
 
+    insertNewTask(project, task, beforeTaskId) {
+        var tasks = project.backlog;
+        var toIndex = beforeTaskId ? this.findTaskIndex(project, beforeTaskId) : tasks.length - 1;
+        tasks.splice(toIndex, 0, task);
+    }
+
     findTask(project, taskId) {
         return project.backlog.find(task => task.id === taskId);
     }
@@ -40,8 +45,12 @@ class ProjectUtils {
         return project.backlog.findIndex(task => task.id === taskId);
     }
 
-    findFirstTaskForSprint(project, sprintId) {
-        return project.backlog.find(task => task.sprint === sprintId);
+    findFirstTaskIndexForSprint(project, sprintId) {
+        return project.backlog.findIndex(task => task.sprint === sprintId);
+    }
+
+    findFirstTaskIndexNotInASprint(project) {
+        return project.backlog.findIndex(task => !task.sprint);
     }
 
     findSprintIndex(project, sprintId) {

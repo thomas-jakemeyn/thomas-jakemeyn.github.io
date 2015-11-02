@@ -70,6 +70,19 @@ class API {
         });
     }
 
+    createTask(projectId, data) {
+        return new Promise(resolve => {
+            // TODO find project and use projectUtils
+            var task = {
+                id: this.generateId(),
+                title: data.title,
+                state: 'toDo',
+                sprint: data.sprint
+            };
+            resolve(task);
+        });
+    }
+
     promisify(returnValue) {
         return new Promise(resolve => {
             var serialized = this.serialize(returnValue);

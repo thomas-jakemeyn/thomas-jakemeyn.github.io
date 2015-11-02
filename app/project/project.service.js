@@ -28,6 +28,14 @@ class ProjectService {
             this.projectUtils.moveTaskToState(project, taskId, stateId);
         });
     }
+
+    createTaskInBacklog(project, data) {
+        var beforeTaskId = this.projectUtils.findFirstTaskIndexNotInASprint(project);
+        data.beforeTaskId = beforeTaskId;
+        this.backend.createTask(project.id, data).then(task => {
+            this.projectUtils.insertNewTask(project, task, beforeTaskId);
+        });
+    }
 }
 
 export default ['backend', 'projectUtils', functions.factoryOf(ProjectService)];

@@ -10,6 +10,7 @@
 </div>
 
 <h2>Backlog</h2>
+<a href="#" ng-click="createTaskInBacklog()">Create task</a>
 <div class="backlog" dragula="'droppable'">
     <div ng-repeat="backlogTask in project.backlog"
          ng-if="!isDefined(backlogTask.sprint)"
