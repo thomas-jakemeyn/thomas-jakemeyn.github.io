@@ -23,9 +23,9 @@ class ProjectService {
         });
     }
 
-    moveTaskToState(project, taskId, stateId, beforeTaskId) {
-        this.backend.moveTaskToState(project.id, taskId, stateId, beforeTaskId).then(() => {
-            this.projectUtils.moveTaskToState(project, taskId, stateId, beforeTaskId);
+    moveTaskToState(project, taskId, stateId) {
+        this.backend.moveTaskToState(project.id, taskId, stateId).then(() => {
+            this.projectUtils.moveTaskToState(project, taskId, stateId);
         });
     }
 }

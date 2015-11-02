@@ -20,8 +20,8 @@ class ProjectBoardController {
             this.$scope.$on(task.id + '.out', (event, task, lane) => {
                 lane.removeClass('over');
             });
-            this.$scope.$on(task.id + '.drop', (event, task, targetLane, sourceLane, beforeTask) => {
-                this.onTaskDropped(task, targetLane, beforeTask);
+            this.$scope.$on(task.id + '.drop', (event, task, targetLane) => {
+                this.onTaskDropped(task, targetLane);
             });
             this.dragulaService.options(this.$scope, task.id, {
                 accepts: (task, targetLane, sourceLane) => {
@@ -31,11 +31,10 @@ class ProjectBoardController {
         });
     }
 
-    onTaskDropped(task, targetLane, beforeTask) {
+    onTaskDropped(task, targetLane) {
         var taskId = task.attr('id');
         var stateId = targetLane.attr('id');
-        var beforeTaskId = beforeTask ? beforeTask.attr('id') : null;
-        this.projectService.moveTaskToState(this.project, taskId, stateId, beforeTaskId);
+        this.projectService.moveTaskToState(this.project, taskId, stateId);
     }
 
     isValidTransition(sourceLane, targetLane) {

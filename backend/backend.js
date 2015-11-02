@@ -63,7 +63,7 @@ class API {
         });
     }
 
-    moveTaskToState(projectId, taskId, stateId, beforeTaskId) {
+    moveTaskToState(projectId, taskId, stateId) {
         return new Promise(resolve => {
             // TODO find project and use projectUtils
             resolve();

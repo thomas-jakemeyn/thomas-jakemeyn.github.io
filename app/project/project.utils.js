@@ -20,7 +20,7 @@ class ProjectUtils {
         this.moveTask(project, taskId, beforeTaskId);
     }
 
-    moveTaskToState(project, taskId, stateId, beforeTaskId) {
+    moveTaskToState(project, taskId, stateId) {
         var task = this.findTask(project, taskId);
         task.state = stateId;
     }
