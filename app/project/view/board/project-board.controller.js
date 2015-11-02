@@ -13,17 +13,17 @@ class ProjectBoardController {
     }
 
     setUpDragAndDrop() {
-        this.project.sprints.forEach(sprint => {
-            this.$scope.$on(sprint.id + '.over', (event, task, lane) => {
+        this.project.backlog.forEach(task => {
+            this.$scope.$on(task.id + '.over', (event, task, lane) => {
                 lane.addClass('over');
             });
-            this.$scope.$on(sprint.id + '.out', (event, task, lane) => {
+            this.$scope.$on(task.id + '.out', (event, task, lane) => {
                 lane.removeClass('over');
             });
-            this.$scope.$on(sprint.id + '.drop', (event, task, targetLane, sourceLane, beforeTask) => {
+            this.$scope.$on(task.id + '.drop', (event, task, targetLane, sourceLane, beforeTask) => {
                 this.onTaskDropped(task, targetLane, beforeTask);
             });
-            this.dragulaService.options(this.$scope, sprint.id, {
+            this.dragulaService.options(this.$scope, task.id, {
                 accepts: (task, targetLane, sourceLane) => {
                     return this.isValidTransition(sourceLane, targetLane);
                 }

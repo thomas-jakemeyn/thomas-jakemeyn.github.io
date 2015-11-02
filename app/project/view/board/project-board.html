@@ -1,11 +1,9 @@
 <div class="board" ng-repeat="sprint in project.sprints">
     <h2>{{sprint.title}}</h2>
 
-    <div ng-repeat="state in project.flow.states" id="{{state}}" class="lane" dragula="'{{sprint.id}}'" dragula-scope="$parent">
-        <div ng-repeat="task in project.backlog"
-             ng-if="task.sprint === sprint.id && task.state === state"
-             ng-bind="task.title"
-             id="{{task.id}}"
-             class="task"></div>
+    <div ng-repeat="state in project.flow.states" class="lane">
+        <div ng-repeat="task in project.backlog" ng-if="task.sprint === sprint.id" id="{{state}}" dragula="'{{task.id}}'" dragula-scope="$parent" class="task-container">
+            <div ng-if="task.state === state" ng-bind="task.title" id="{{task.id}}" class="task"></div>
+        </div>
     </div>
 </div>
