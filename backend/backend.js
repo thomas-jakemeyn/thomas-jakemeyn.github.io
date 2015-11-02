@@ -42,8 +42,8 @@ class API {
             states: ['toDo', 'inProgress', 'resolved', 'done'],
             transitions: {
                 toDo: ['toDo', 'inProgress'],
-                inProgress: ['inProgress', 'resolved'],
-                resolved: ['resolved', 'done'],
+                inProgress: ['toDo', 'inProgress', 'resolved'],
+                resolved: ['toDo', 'inProgress', 'resolved', 'done'],
                 done: ['done', 'toDo']
             }
         };
