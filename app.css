@@ -43,9 +43,13 @@
     background-color: #f1f1f1;
 }
 
+.board .lane .task-container, .board .lane .task, .sprint .task, .backlog .task {
+    background-color: white;
+    height: 50px;
+}
+
 .board .lane .task, .sprint .task, .backlog .task {
     padding: 6px;
-    background-color: white;
     border: 1px solid #999;
     color: #777;
 }
@@ -53,10 +57,6 @@
 .board .lane .task-container, .sprint .task, .backlog .task {
     margin: 6px;
     background-color: white;
-}
-
-.board .lane .task-container {
-    min-height: 25px;
 }
 
 .board .lane .task:hover, .sprint .task:hover, .backlog .task:hover {
