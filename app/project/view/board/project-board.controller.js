@@ -31,10 +31,10 @@ class ProjectBoardController {
         });
     }
 
-    onTaskDropped(task, targetLane) {
+    onTaskDropped(task, lane) {
         var taskId = task.attr('id');
-        var stateId = targetLane.attr('id');
-        this.projectService.moveTaskToState(this.project, taskId, stateId);
+        var stateId = lane.attr('id');
+        this.projectService.changeTaskState(this.project, taskId, stateId);
     }
 
     isValidTransition(sourceLane, targetLane) {

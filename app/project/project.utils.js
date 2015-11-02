@@ -13,8 +13,8 @@ class ProjectUtils {
      *     <li>If neither the sprint, neither the next task are defined, then the task is moved to the end of the backlog.</li>
      * </ul>
      *
-     * @param {Object} project the project whose priorities are being changed
-     * @param {String} taskId the identifier of the task whose priority is being changed
+     * @param {Object} project the project the task belongs to
+     * @param {String} taskId the identifier of the task whose priority must be changed
      * @param {String} [nextTaskId] the identifier of the next task
      * @param {String} [sprintId] the identifier of the sprint the task is moved to
      */
@@ -45,7 +45,14 @@ class ProjectUtils {
         tasks.splice(toIndex, 0, tasks.splice(fromIndex, 1)[0]);
     }
 
-    moveTaskToState(project, taskId, stateId) {
+    /**
+     * Change the state of the given task in the given project.
+     *
+     * @param {Object} project the project the task belongs to
+     * @param {String} taskId the identifier of the task whose state must be changed
+     * @param {String} stateId the identifier of the new state of the task
+     */
+    changeTaskState(project, taskId, stateId) {
         var task = this.findTask(project, taskId);
         task.state = stateId;
     }
