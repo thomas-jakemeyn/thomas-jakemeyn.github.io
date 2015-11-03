@@ -11,15 +11,15 @@ class ProjectViewController {
 
         $scope.project = project;
         $scope.isDefined = angular.isDefined;
-        $scope.createTaskInBacklog = () => {
-            this.createTaskInBacklog();
+        $scope.createTask = (sprintId) => {
+            this.createTask(sprintId);
         };
     }
 
-    createTaskInBacklog() {
-        this.projectService.createTaskInBacklog(this.project, {
+    createTask(sprintId) {
+        this.projectService.createTask(this.project, {
             title: 'This is a test story!'
-        });
+        }, null, sprintId);
     }
 }
 

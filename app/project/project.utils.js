@@ -23,25 +23,10 @@ class ProjectUtils {
         var task = this.findTask(project, taskId);
         task.sprint = sprintId;
 
-        // compute the next task when the task is moved at the end of a sprint
-        if (sprintId && !nextTaskId) {
-            var sprints = project.sprints;
-            var sprintIndex = this.findSprintIndex(project, sprintId) + 1;
-            while (sprintIndex < sprints.length && !nextTaskId) {
-                task = this.findFirstTaskOfSprint(project, sprints[sprintIndex].id);
-                nextTaskId = task ? task.id : null;
-                sprintIndex++;
-            }
-            if (!nextTaskId) {
-                task = this.findFirstTaskNotAssignedToSprint(project);
-                nextTaskId = task ? task.id : null;
-            }
-        }
-
         // move the task
         var tasks = project.backlog;
         var fromIndex = this.findTaskIndex(project, taskId);
-        var toIndex = nextTaskId ? this.findTaskIndex(project, nextTaskId) : tasks.length - 1;
+        var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
         tasks.splice(toIndex, 0, tasks.splice(fromIndex, 1)[0]);
     }
 
@@ -57,10 +42,28 @@ class ProjectUtils {
         task.state = stateId;
     }
 
-    insertNewTask(project, task, beforeTaskId) {
+    insertNewTask(project, task, nextTaskId, sprintId) {
         var tasks = project.backlog;
-        var toIndex = beforeTaskId ? this.findTaskIndex(project, beforeTaskId) : tasks.length - 1;
+        var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
         tasks.splice(toIndex, 0, task);
+    }
+
+    computeNewTaskIndex(project, nextTaskId, sprintId) {
+        if (!nextTaskId && sprintId) {
+            var nextTask;
+            var sprints = project.sprints;
+            var sprintIndex = this.findSprintIndex(project, sprintId) + 1;
+            while (sprintIndex < sprints.length && !nextTaskId) {
+                nextTask = this.findFirstTaskOfSprint(project, sprints[sprintIndex].id);
+                nextTaskId = nextTask ? nextTask.id : null;
+                sprintIndex++;
+            }
+            if (!nextTaskId) {
+                nextTask = this.findFirstTaskNotAssignedToSprint(project);
+                nextTaskId = nextTask ? nextTask.id : null;
+            }
+        }
+        return nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.backlog.length - 1;
     }
 
     findTask(project, taskId) {

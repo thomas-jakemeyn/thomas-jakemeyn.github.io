@@ -70,15 +70,15 @@ class API {
         });
     }
 
-    createTask(projectId, data) {
+    createTask(projectId, data, nextTaskId, sprintId) {
         return new Promise(resolve => {
-            // TODO find project and use projectUtils
             var task = {
                 id: this.generateId(),
                 title: data.title,
                 state: 'toDo',
-                sprint: data.sprint
+                sprint: sprintId
             };
+            // TODO find project and use projectUtils
             resolve(task);
         });
     }

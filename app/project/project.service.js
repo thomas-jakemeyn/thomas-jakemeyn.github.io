@@ -29,11 +29,9 @@ class ProjectService {
         });
     }
 
-    createTaskInBacklog(project, data) {
-        var beforeTaskId = this.projectUtils.findFirstTaskIndexNotAssignedToSprint(project);
-        data.beforeTaskId = beforeTaskId;
-        this.backend.createTask(project.id, data).then(task => {
-            this.projectUtils.insertNewTask(project, task, beforeTaskId);
+    createTask(project, data, nextTaskId, sprintId) {
+        this.backend.createTask(project.id, data, nextTaskId, sprintId).then(task => {
+            this.projectUtils.insertNewTask(project, task, nextTaskId, sprintId);
         });
     }
 }
