@@ -79,7 +79,7 @@ class ProjectUtils {
                 sprintIndex++;
             }
             if (!nextTaskId) {
-                nextTask = this.findFirstTaskNotAssignedToSprint(project);
+                nextTask = this.findFirstTaskOfBacklog(project);
                 nextTaskId = nextTask ? nextTask.id : null;
             }
         }
@@ -98,12 +98,8 @@ class ProjectUtils {
         return project.tasks.find(task => task.sprint === sprintId);
     }
 
-    findFirstTaskNotAssignedToSprint(project) {
+    findFirstTaskOfBacklog(project) {
         return project.tasks.find(task => !task.sprint);
-    }
-
-    findFirstTaskIndexNotAssignedToSprint(project) {
-        return project.tasks.findIndex(task => !task.sprint);
     }
 
     findSprintIndex(project, sprintId) {
