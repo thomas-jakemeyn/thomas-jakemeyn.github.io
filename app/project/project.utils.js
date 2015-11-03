@@ -28,6 +28,8 @@ class ProjectUtils {
         var fromIndex = this.findTaskIndex(project, taskId);
         var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
         tasks.splice(toIndex, 0, tasks.splice(fromIndex, 1)[0]);
+        console.log('Task \'' + taskId + '\' moved to sprint \'' + sprintId + '\', before task \'' + nextTaskId + '\'.\n'
+                + this.stringify(project.backlog));
     }
 
     /**
@@ -40,12 +42,16 @@ class ProjectUtils {
     changeTaskState(project, taskId, stateId) {
         var task = this.findTask(project, taskId);
         task.state = stateId;
+        console.log('Task \'' + taskId + '\' moved to state \'' + stateId + '\'.\n'
+                + this.stringify(project.backlog));
     }
 
     insertNewTask(project, task, nextTaskId, sprintId) {
         var tasks = project.backlog;
         var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
         tasks.splice(toIndex, 0, task);
+        console.log('New task ' + task.id + ' inserted in sprint \'' + sprintId + '\', before task \'' + nextTaskId + '\'.\n'
+                + this.stringify(project.backlog));
     }
 
     computeNewTaskIndex(project, nextTaskId, sprintId) {
@@ -63,7 +69,7 @@ class ProjectUtils {
                 nextTaskId = nextTask ? nextTask.id : null;
             }
         }
-        return nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.backlog.length - 1;
+        return nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.backlog.length;
     }
 
     findTask(project, taskId) {
@@ -88,6 +94,10 @@ class ProjectUtils {
 
     findSprintIndex(project, sprintId) {
         return project.sprints.findIndex(sprint => sprint.id === sprintId);
+    }
+
+    stringify(object) {
+        return JSON.stringify(object, null, '\t');
     }
 }
 
