@@ -1,11 +1,24 @@
-<div class="board" ng-repeat="sprint in project.sprints">
+<div ng-repeat="sprint in project.sprints">
     <h2>{{sprint.title}}</h2>
+    <a href="#" ng-click="createTask(sprint.id)">Create task</a>
 
-    <div ng-repeat="state in project.flow.states" class="lane-container">
-        <div class="lane-title">{{state}}</div>
-        <div class="lane">
-            <div ng-repeat="task in getTasksOfSprint(sprint.id)" id="{{state}}" dragula="'{{task.id}}'" dragula-scope="$parent" class="task-container">
-                <div ng-if="task.state === state" ng-bind="task.title" id="{{task.id}}" class="task"></div>
+    <div class="board" ng-style="{'column-count': project.flow.states.length}">
+        <div ng-repeat="state in project.flow.states">
+            <div class="lane-title">{{state}}</div>
+            <div class="lane">
+                <div ng-repeat="task in getTasksOfSprint(sprint.id)"
+                     id="{{state}}"
+                     dragula="'{{task.id}}'"
+                     dragula-scope="$parent"
+                     class="task-container">
+
+                    <div ng-if="task.state === state"
+                         ng-bind="task.title"
+                         title="{{task.title}}"
+                         id="{{task.id}}"
+                         class="task"></div>
+
+                </div>
             </div>
         </div>
     </div>

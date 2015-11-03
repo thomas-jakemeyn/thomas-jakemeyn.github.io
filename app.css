@@ -30,21 +30,9 @@
     width: 900px;
 }
 
-.board {
-    clear: both;
-}
-
-.board .lane-container {
-    float: left;
-}
-
 .board .lane-title {
     font-weight: bold;
     text-align: center;
-}
-
-.board .lane {
-    width: 250px;
 }
 
 .sprint.over, .backlog.over, .board .lane.over {
@@ -60,6 +48,7 @@
     padding: 6px;
     border: 1px solid #999;
     color: #777;
+    overflow: hidden;
 }
 
 .board .lane .task-container, .sprint .task, .backlog .task {
