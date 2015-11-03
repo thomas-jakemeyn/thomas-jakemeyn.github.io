@@ -34,9 +34,17 @@
     clear: both;
 }
 
+.board .lane-container {
+    float: left;
+}
+
+.board .lane-title {
+    font-weight: bold;
+    text-align: center;
+}
+
 .board .lane {
     width: 250px;
-    float: left;
 }
 
 .sprint.over, .backlog.over, .board .lane.over {
