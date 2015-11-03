@@ -2,7 +2,7 @@
     <h2>{{sprint.title}}</h2>
 
     <div ng-repeat="state in project.flow.states" class="lane">
-        <div ng-repeat="task in project.tasks" ng-if="task.sprint === sprint.id" id="{{state}}" dragula="'{{task.id}}'" dragula-scope="$parent" class="task-container">
+        <div ng-repeat="task in getTasksOfSprint(sprint.id)" id="{{state}}" dragula="'{{task.id}}'" dragula-scope="$parent" class="task-container">
             <div ng-if="task.state === state" ng-bind="task.title" id="{{task.id}}" class="task"></div>
         </div>
     </div>

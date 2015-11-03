@@ -34,7 +34,9 @@ class ProjectBoardController {
     onTaskDropped(task, lane) {
         var taskId = task.attr('id');
         var stateId = lane.attr('id');
-        this.projectService.changeTaskState(this.project, taskId, stateId);
+        this.projectService.changeTaskState(this.project, taskId, stateId).then(() => {
+            this.$scope.$apply();
+        });
     }
 
     isValidTransition(sourceLane, targetLane) {

@@ -1,7 +1,5 @@
 'use strict';
 
-import angular from 'angular';
-
 class ProjectViewController {
 
     constructor($scope, projectService, project) {
@@ -10,10 +8,17 @@ class ProjectViewController {
         this.project = project;
 
         $scope.project = project;
-        $scope.isDefined = angular.isDefined;
-        $scope.createTask = (sprintId) => {
-            this.createTask(sprintId);
-        };
+        $scope.getTasksOfBacklog = () => this.getTasksOfBacklog();
+        $scope.getTasksOfSprint = (sprintId) => this.getTasksOfSprint(sprintId);
+        $scope.createTask = (sprintId) => this.createTask(sprintId);
+    }
+
+    getTasksOfBacklog() {
+        return this.projectService.getTasksOfBacklog(this.project);
+    }
+
+    getTasksOfSprint(sprintId) {
+        return this.projectService.getTasksOfSprint(this.project, sprintId);
     }
 
     createTask(sprintId) {

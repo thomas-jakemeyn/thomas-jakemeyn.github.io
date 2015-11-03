@@ -28,7 +28,9 @@ class ProjectBacklogController {
         var taskId = task.attr('id');
         var nextTaskId = nextTask ? nextTask.attr('id') : null;
         var sprintId = sprint.attr('id');
-        this.projectService.changeTaskPriority(this.project, taskId, nextTaskId, sprintId);
+        this.projectService.changeTaskPriority(this.project, taskId, nextTaskId, sprintId).then(() => {
+            this.$scope.$apply();
+        });
     }
 }
 

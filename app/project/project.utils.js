@@ -86,6 +86,14 @@ class ProjectUtils {
         return nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.tasks.length;
     }
 
+    getTasksOfBacklog(project) {
+        return project.tasks.filter(task => !task.sprint);
+    }
+
+    getTasksOfSprint(project, sprintId) {
+        return project.tasks.filter(task => task.sprint === sprintId);
+    }
+
     findTask(project, taskId) {
         return project.tasks.find(task => task.id === taskId);
     }

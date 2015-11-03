@@ -2,20 +2,12 @@
     <h2>{{sprint.title}}</h2>
     <a href="#" ng-click="createTask(sprint.id)">Create task</a>
     <div id="{{sprint.id}}" class="sprint" dragula="'droppable'" dragula-scope="$parent">
-        <div ng-repeat="sprintTask in project.tasks"
-             ng-show="sprintTask.sprint === sprint.id"
-             ng-bind="sprintTask.title"
-             id="{{sprintTask.id}}"
-             class="task"></div>
+        <div ng-repeat="sprintTask in getTasksOfSprint(sprint.id)" ng-bind="sprintTask.title" id="{{sprintTask.id}}" class="task"></div>
     </div>
 </div>
 
 <h2>Backlog</h2>
 <a href="#" ng-click="createTask()">Create task</a>
 <div class="backlog" dragula="'droppable'">
-    <div ng-repeat="backlogTask in project.tasks"
-         ng-show="!isDefined(backlogTask.sprint)"
-         ng-bind="backlogTask.title"
-         id="{{backlogTask.id}}"
-         class="task"></div>
+    <div ng-repeat="backlogTask in getTasksOfBacklog()" ng-bind="backlogTask.title" id="{{backlogTask.id}}" class="task"></div>
 </div>

@@ -17,6 +17,14 @@ class ProjectService {
         return this.backend.getProject(projectId);
     }
 
+    getTasksOfBacklog(project) {
+        return this.projectUtils.getTasksOfBacklog(project);
+    }
+
+    getTasksOfSprint(project, sprintId) {
+        return this.projectUtils.getTasksOfSprint(project, sprintId);
+    }
+
     changeTaskPriority(project, taskId, nextTaskId, sprintId) {
         return this.backend.changeTaskPriority(project.id, taskId, nextTaskId, sprintId).then(() => {
             this.projectUtils.changeTaskPriority(project, taskId, nextTaskId, sprintId);
