@@ -40,6 +40,7 @@ class ProjectService {
     createTask(project, data, nextTaskId, sprintId) {
         return this.backend.createTask(project.id, data, nextTaskId, sprintId).then(task => {
             this.projectUtils.insertNewTask(project, task, nextTaskId, sprintId);
+            return task;
         });
     }
 }

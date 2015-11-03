@@ -10,24 +10,32 @@ class ProjectBoardController {
         this.projectService = projectService;
         this.dragulaService = dragulaService;
         this.setUpDragAndDrop();
+
+        this.$scope.$on('task-created', (event, task) => {
+            this.setUpDragAndDropForTask(task);
+        });
     }
 
     setUpDragAndDrop() {
         this.project.tasks.forEach(task => {
-            this.$scope.$on(task.id + '.over', (event, task, lane) => {
-                lane.addClass('over');
-            });
-            this.$scope.$on(task.id + '.out', (event, task, lane) => {
-                lane.removeClass('over');
-            });
-            this.$scope.$on(task.id + '.drop', (event, task, targetLane) => {
-                this.onTaskDropped(task, targetLane);
-            });
-            this.dragulaService.options(this.$scope, task.id, {
-                accepts: (task, targetLane, sourceLane) => {
-                    return this.isValidTransition(sourceLane, targetLane);
-                }
-            });
+            this.setUpDragAndDropForTask(task);
+        });
+    }
+
+    setUpDragAndDropForTask(task) {
+        this.$scope.$on(task.id + '.over', (event, task, lane) => {
+            lane.addClass('over');
+        });
+        this.$scope.$on(task.id + '.out', (event, task, lane) => {
+            lane.removeClass('over');
+        });
+        this.$scope.$on(task.id + '.drop', (event, task, targetLane) => {
+            this.onTaskDropped(task, targetLane);
+        });
+        this.dragulaService.options(this.$scope, task.id, {
+            accepts: (task, targetLane, sourceLane) => {
+                return this.isValidTransition(sourceLane, targetLane);
+            }
         });
     }
 

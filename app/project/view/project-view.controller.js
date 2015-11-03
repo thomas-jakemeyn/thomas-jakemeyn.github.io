@@ -22,9 +22,12 @@ class ProjectViewController {
     }
 
     createTask(sprintId) {
-        this.projectService.createTask(this.project, {
+        var data = {
             title: 'This is a test story!'
-        }, null, sprintId);
+        };
+        this.projectService.createTask(this.project, data, null, sprintId).then(task => {
+            this.$scope.$broadcast('task-created', task);
+        });
     }
 }
 
