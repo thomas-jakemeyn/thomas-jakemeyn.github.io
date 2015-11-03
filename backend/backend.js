@@ -28,7 +28,7 @@ class API {
             id: this.generateId(),
             title: 'Sprint 2'
         }];
-        var backlog = [{
+        var tasks = [{
             id: this.generateId(),
             title: 'As a user, I want to see a basic SCRUM board',
             state: 'toDo',
@@ -50,7 +50,7 @@ class API {
         return this.promisify({
             id: projectId,
             title: 'scrum-light-mvp',
-            backlog: backlog,
+            tasks: tasks,
             sprints: sprints,
             flow: flow
         });

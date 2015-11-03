@@ -13,7 +13,7 @@ class ProjectBoardController {
     }
 
     setUpDragAndDrop() {
-        this.project.backlog.forEach(task => {
+        this.project.tasks.forEach(task => {
             this.$scope.$on(task.id + '.over', (event, task, lane) => {
                 lane.addClass('over');
             });
