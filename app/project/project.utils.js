@@ -19,15 +19,11 @@ class ProjectUtils {
      * @param {String} [sprintId] the identifier of the sprint the task is moved to
      */
     changeTaskPriority(project, taskId, nextTaskId, sprintId) {
-        // assign the task to the given sprint
-        var task = this.findTask(project, taskId);
-        task.sprint = sprintId;
-
-        // move the task
         var tasks = project.tasks;
-        var fromIndex = this.findTaskIndex(project, taskId);
-        var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId) - 1;  // -1 because of the 2 invocations of splice()
-        tasks.splice(toIndex, 0, tasks.splice(fromIndex, 1)[0]);
+        var taskIndex = this.findTaskIndex(project, taskId);
+        var task = tasks.splice(taskIndex, 1)[0];
+        task.sprint = sprintId;
+        this.insertNewTask(project, task, nextTaskId, sprintId);
         console.log('Task \'' + taskId + '\' moved to sprint \'' + sprintId + '\', before task \'' + nextTaskId + '\'.\n'
                 + this.stringify(tasks));
     }
