@@ -46,6 +46,20 @@ class ProjectUtils {
                 + this.stringify(project.backlog));
     }
 
+    /**
+     * Insert the given task in the given project.
+     * <ul>
+     *     <li>If both the next task and the sprint are defined, then the task is moved to the given sprint, before the given task.</li>
+     *     <li>If the next task is defined but not the sprint, then the task is moved to the backlog, before the given task.</li>
+     *     <li>If the sprint is defined but not the next task, then the task is moved to the end of the given sprint.</li>
+     *     <li>If neither the sprint, neither the next task are defined, then the task is moved to the end of the backlog.</li>
+     * </ul>
+     *
+     * @param {Object} project the project the task belongs to
+     * @param {String} task the task that must be inserted
+     * @param {String} [nextTaskId] the identifier of the next task
+     * @param {String} [sprintId] the identifier of the sprint the task is moved to
+     */
     insertNewTask(project, task, nextTaskId, sprintId) {
         var tasks = project.backlog;
         var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
