@@ -26,7 +26,8 @@ class ProjectUtils {
         // move the task
         var tasks = project.backlog;
         var fromIndex = this.findTaskIndex(project, taskId);
-        var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
+        nextTaskId = this.computeNextTaskId(project, nextTaskId, sprintId);
+        var toIndex = (nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.backlog.length) - 1;
         tasks.splice(toIndex, 0, tasks.splice(fromIndex, 1)[0]);
         console.log('Task \'' + taskId + '\' moved to sprint \'' + sprintId + '\', before task \'' + nextTaskId + '\'.\n'
                 + this.stringify(project.backlog));
@@ -62,13 +63,14 @@ class ProjectUtils {
      */
     insertNewTask(project, task, nextTaskId, sprintId) {
         var tasks = project.backlog;
-        var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
+        nextTaskId = this.computeNextTaskId(project, nextTaskId, sprintId);
+        var toIndex = nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.backlog.length;
         tasks.splice(toIndex, 0, task);
         console.log('New task ' + task.id + ' inserted in sprint \'' + sprintId + '\', before task \'' + nextTaskId + '\'.\n'
                 + this.stringify(project.backlog));
     }
 
-    computeNewTaskIndex(project, nextTaskId, sprintId) {
+    computeNextTaskId(project, nextTaskId, sprintId) {
         if (!nextTaskId && sprintId) {
             var nextTask;
             var sprints = project.sprints;
@@ -83,7 +85,7 @@ class ProjectUtils {
                 nextTaskId = nextTask ? nextTask.id : null;
             }
         }
-        return nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.backlog.length;
+        return nextTaskId;
     }
 
     findTask(project, taskId) {
