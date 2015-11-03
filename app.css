@@ -27,7 +27,7 @@
 }
 
 .sprint, .backlog {
-    width: 900px;
+    width: calc(100% - 20px);
 }
 
 .board .lane-title {
