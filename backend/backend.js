@@ -95,7 +95,7 @@ class API {
     }
 
     generateId() {
-        return uuid.v1();
+        return uuid.v4();
     }
 }
 
