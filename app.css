@@ -26,7 +26,7 @@
     min-height: 50px;
     margin: 10px;
     padding: 6px;
-    background-color: #f8f8f8;
+    background-color: #ddd;
     border: 1px solid #e7e7e7;
 }
 
@@ -45,8 +45,8 @@
     text-align: center;
 }
 
-.sprint.over, .backlog.over, .board .lane.over {
-    background-color: #f1f1f1;
+.sprint.over, .backlog.over, .board .lane .task-container.over {
+    background-color: #eee;
 }
 
 .board .lane .task-container, .board .lane .task, .sprint .task, .backlog .task {
