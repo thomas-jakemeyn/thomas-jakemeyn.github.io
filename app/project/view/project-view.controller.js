@@ -4,8 +4,9 @@ import angular from 'angular';
 
 class ProjectViewController {
 
-    constructor($scope, $state, projectService, project) {
+    constructor($scope, $state, $uibModal, projectService, project) {
         this.$scope = $scope;
+        this.$uibModal = $uibModal;
         this.projectService = projectService;
         this.project = project;
 
@@ -31,11 +32,16 @@ class ProjectViewController {
     }
 
     createTask(sprintId) {
-        var data = {
-            title: 'This is a test story!'
-        };
-        this.projectService.createTask(this.project, data, null, sprintId).then(task => {
-            this.$scope.$apply();
+        var dialog = this.$uibModal.open({
+            templateUrl: 'app/project/view/task/task-creation-form.html',
+            controller: 'TaskCreationFormController',
+            animation: true,
+            size: 'lg'
+        });
+
+        dialog.result.then(data => {
+            return this.projectService.createTask(this.project, data, null, sprintId);
+        }).then(task => {
             this.$scope.$broadcast('task-created', task);
             console.log('Task ' + task.id + ' created in sprint ' + sprintId + '.\n' + angular.toJson(this.project.tasks, true));
         });
@@ -49,4 +55,4 @@ class ProjectViewController {
     }
 }
 
-export default ['$scope', '$state', 'projectService', 'project', ProjectViewController];
+export default ['$scope', '$state', '$uibModal', 'projectService', 'project', ProjectViewController];
