@@ -24,7 +24,7 @@
 
 .sprint, .backlog, .board .lane {
     min-height: 50px;
-    margin: 10px;
+    margin: 15px;
     padding: 6px;
     background-color: #ddd;
     border: 1px solid #e7e7e7;
@@ -32,6 +32,10 @@
 
 .sprint, .backlog {
     width: calc(100% - 20px);
+}
+
+.sprint-actions {
+    margin-left: 15px;
 }
 
 .board {

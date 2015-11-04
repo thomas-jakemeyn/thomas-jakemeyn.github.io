@@ -1,6 +1,8 @@
-<button type="button" class="btn btn-xs btn-success" ng-click="createTask(sprint ? sprint.id : null)">
-    <span class="fa fa-plus"></span> Create task
-</button>
-<button type="button" class="btn btn-xs btn-success" ng-click="completeSprint(sprint.id)" ng-if="!!sprint">
-    <span class="fa fa-check"></span> Complete sprint
-</button>
+<div class="sprint-actions">
+    <button type="button" class="btn btn-xs btn-success" ng-click="createTask(sprint ? sprint.id : null)">
+        <span class="fa fa-plus"></span> Create task
+    </button>
+    <button type="button" class="btn btn-xs btn-success" ng-click="completeSprint(sprint.id)" ng-if="!!sprint">
+        <span class="fa fa-check"></span> Complete sprint
+    </button>
+</div>
