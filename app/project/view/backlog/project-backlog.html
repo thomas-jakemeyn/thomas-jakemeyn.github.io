@@ -1,5 +1,5 @@
 <div ng-repeat="sprint in getSprints()">
-    <h2>{{sprint.title}}</h2>
+    <h3>{{sprint.title}}</h3>
 
     <div sprint-actions></div>
     <div id="{{sprint.id}}" class="sprint" dragula="'droppable'" dragula-scope="$parent">
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<h2>Backlog</h2>
+<h3>Backlog</h3>
 <div sprint-actions></div>
 <div class="backlog" dragula="'droppable'">
     <div ng-repeat="backlogTask in getTasksOfBacklog()"
