@@ -82,6 +82,28 @@ class ProjectUtils {
         return nextTaskId ? this.findTaskIndex(project, nextTaskId) : project.tasks.length;
     }
 
+    completeSprint(project, sprintId) {
+        var sprint = this.findSprint(project, sprintId);
+        sprint.completed = true;
+
+        var finalState = project.flow.states[project.flow.states.length - 1];
+        var tasks = this.getTasksOfSprint(project, sprintId);
+        tasks.reverse().forEach(task => {
+            if (task.state === finalState) {
+                var taskIndex = this.findTaskIndex(project, task.id);
+                project.tasks.splice(taskIndex, 1);
+                project.completed.unshift(task);
+            } else {
+                this.moveTaskToTopOfBacklog(project, task.id);
+            }
+        });
+        console.log('Sprint ' + sprintId + ' completed.\n' + this.stringify(project));
+    }
+
+    moveTaskToTopOfBacklog(project, taskId) {
+        this.changeTaskPriority(project, taskId, this.findFirstTaskOfBacklog(project));
+    }
+
     getTasksOfBacklog(project) {
         return project.tasks.filter(task => !task.sprint);
     }
@@ -104,6 +126,10 @@ class ProjectUtils {
 
     findFirstTaskOfBacklog(project) {
         return project.tasks.find(task => !task.sprint);
+    }
+
+    findSprint(project, sprintId) {
+        return project.sprints.find(sprint => sprint.id === sprintId);
     }
 
     findSprintIndex(project, sprintId) {

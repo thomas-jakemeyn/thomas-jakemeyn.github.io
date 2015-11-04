@@ -23,10 +23,12 @@ class API {
     getProject(projectId) {
         var sprints = [{
             id: this.generateId(),
-            title: 'Sprint 1'
+            title: 'Sprint 1',
+            completed: false
         }, {
             id: this.generateId(),
-            title: 'Sprint 2'
+            title: 'Sprint 2',
+            completed: false
         }];
         var tasks = [{
             id: this.generateId(),
@@ -50,8 +52,9 @@ class API {
         return this.promisify({
             id: projectId,
             title: 'scrum-light-mvp',
-            tasks: tasks,
             sprints: sprints,
+            tasks: tasks,
+            completed: [],
             flow: flow
         });
     }
@@ -80,6 +83,13 @@ class API {
             };
             // TODO find project and use projectUtils
             resolve(task);
+        });
+    }
+
+    completeSprint(projectId, sprintId) {
+        return new Promise(resolve => {
+            // TODO find project and use projectUtils
+            resolve();
         });
     }
 

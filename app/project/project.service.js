@@ -43,6 +43,12 @@ class ProjectService {
             return task;
         });
     }
+
+    completeSprint(project, sprintId) {
+        return this.backend.completeSprint(project.id, sprintId).then(() => {
+            this.projectUtils.completeSprint(project, sprintId);
+        });
+    }
 }
 
 export default ['backend', 'projectUtils', functions.factoryOf(ProjectService)];

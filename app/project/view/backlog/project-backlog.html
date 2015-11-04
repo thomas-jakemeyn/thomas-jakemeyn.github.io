@@ -1,6 +1,7 @@
 <div ng-repeat="sprint in project.sprints">
     <h2>{{sprint.title}}</h2>
     <a href="#" ng-click="createTask(sprint.id)">Create task</a>
+    <a href="#" ng-click="completeSprint(sprint.id)">Complete sprint</a>
 
     <div id="{{sprint.id}}" class="sprint" dragula="'droppable'" dragula-scope="$parent">
         <div ng-repeat="sprintTask in getTasksOfSprint(sprint.id)"

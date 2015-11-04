@@ -9,8 +9,9 @@ class ProjectViewController {
 
         $scope.project = project;
         $scope.getTasksOfBacklog = () => this.getTasksOfBacklog();
-        $scope.getTasksOfSprint = (sprintId) => this.getTasksOfSprint(sprintId);
-        $scope.createTask = (sprintId) => this.createTask(sprintId);
+        $scope.getTasksOfSprint = sprintId => this.getTasksOfSprint(sprintId);
+        $scope.createTask = sprintId => this.createTask(sprintId);
+        $scope.completeSprint = sprintId => this.completeSprint(sprintId);
     }
 
     getTasksOfBacklog() {
@@ -28,6 +29,10 @@ class ProjectViewController {
         this.projectService.createTask(this.project, data, null, sprintId).then(task => {
             this.$scope.$broadcast('task-created', task);
         });
+    }
+
+    completeSprint(sprintId) {
+        this.projectService.completeSprint(this.project, sprintId);
     }
 }
 
