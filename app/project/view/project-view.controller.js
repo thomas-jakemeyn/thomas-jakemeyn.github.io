@@ -4,11 +4,12 @@ import angular from 'angular';
 
 class ProjectViewController {
 
-    constructor($scope, projectService, project) {
+    constructor($scope, $state, projectService, project) {
         this.$scope = $scope;
         this.projectService = projectService;
         this.project = project;
 
+        $scope.$state = $state;
         $scope.project = project;
         $scope.getSprints = () => this.getSprints();
         $scope.getTasksOfBacklog = () => this.getTasksOfBacklog();
@@ -48,4 +49,4 @@ class ProjectViewController {
     }
 }
 
-export default ['$scope', 'projectService', 'project', ProjectViewController];
+export default ['$scope', '$state', 'projectService', 'project', ProjectViewController];

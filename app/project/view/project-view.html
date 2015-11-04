@@ -1,4 +1,10 @@
 <h1>{{project.title}}</h1>
-<a ui-sref="project-backlog">Backlog</a>
-<a ui-sref="project-board">Board</a>
+<uib-tabset type="pills">
+    <uib-tab select="$state.go('project-backlog')">
+        <uib-tab-heading>Backlog</uib-tab-heading>
+    </uib-tab>
+    <uib-tab select="$state.go('project-board')">
+        <uib-tab-heading>Board</uib-tab-heading>
+    </uib-tab>
+</uib-tabset>
 <div ui-view></div>

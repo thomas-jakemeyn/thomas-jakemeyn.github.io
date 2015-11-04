@@ -16,6 +16,7 @@ System.config({
   map: {
     "angular": "github:angular/bower-angular@1.4.7",
     "angular-dragula": "npm:angular-dragula@1.1.3",
+    "angular-ui-bootstrap": "npm:angular-ui-bootstrap@0.14.3",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
@@ -73,6 +74,12 @@ System.config({
     "npm:angular-dragula@1.1.3": {
       "atoa": "npm:atoa@1.0.0",
       "dragula": "npm:dragula@3.5.2",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular-ui-bootstrap@0.14.3": {
+      "angular": "npm:angular@1.4.7"
+    },
+    "npm:angular@1.4.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:asn1.js@2.2.1": {

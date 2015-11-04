@@ -1,4 +1,4 @@
-a[ng-click] {
+.nav, .pagination, .carousel, .panel-title a, a[ng-click] {
     cursor: pointer;
 }
 
@@ -32,6 +32,12 @@ a[ng-click] {
 
 .sprint, .backlog {
     width: calc(100% - 20px);
+}
+
+.board {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
 }
 
 .board .lane-title {
