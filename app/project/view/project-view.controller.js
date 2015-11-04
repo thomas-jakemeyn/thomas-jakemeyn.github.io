@@ -1,5 +1,7 @@
 'use strict';
 
+import angular from 'angular';
+
 class ProjectViewController {
 
     constructor($scope, projectService, project) {
@@ -8,10 +10,15 @@ class ProjectViewController {
         this.project = project;
 
         $scope.project = project;
+        $scope.getSprints = () => this.getSprints();
         $scope.getTasksOfBacklog = () => this.getTasksOfBacklog();
         $scope.getTasksOfSprint = sprintId => this.getTasksOfSprint(sprintId);
         $scope.createTask = sprintId => this.createTask(sprintId);
         $scope.completeSprint = sprintId => this.completeSprint(sprintId);
+    }
+
+    getSprints() {
+        return this.projectService.getSprints(this.project);
     }
 
     getTasksOfBacklog() {
@@ -28,11 +35,14 @@ class ProjectViewController {
         };
         this.projectService.createTask(this.project, data, null, sprintId).then(task => {
             this.$scope.$broadcast('task-created', task);
+            console.log('Task ' + task.id + ' created in sprint ' + sprintId + '.\n' + angular.toJson(this.project.tasks, true));
         });
     }
 
     completeSprint(sprintId) {
-        this.projectService.completeSprint(this.project, sprintId);
+        this.projectService.completeSprint(this.project, sprintId).then(() => {
+            console.log('Sprint ' + sprintId + ' completed.\n' + angular.toJson(this.project, true));
+        });
     }
 }
 

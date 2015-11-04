@@ -30,6 +30,8 @@ class ProjectBacklogController {
         var sprintId = sprint.attr('id');
         this.projectService.changeTaskPriority(this.project, taskId, nextTaskId, sprintId).then(() => {
             this.$scope.$apply();
+            console.log('Task ' + taskId + ' moved to sprint ' + sprintId + ', before task ' + nextTaskId + '.\n'
+                    + angular.toJson(this.project.tasks, true));
         });
     }
 }

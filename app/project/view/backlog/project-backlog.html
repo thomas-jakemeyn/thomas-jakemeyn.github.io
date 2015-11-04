@@ -1,4 +1,4 @@
-<div ng-repeat="sprint in project.sprints">
+<div ng-repeat="sprint in getSprints()">
     <h2>{{sprint.title}}</h2>
     <a href="#" ng-click="createTask(sprint.id)">Create task</a>
     <a href="#" ng-click="completeSprint(sprint.id)">Complete sprint</a>

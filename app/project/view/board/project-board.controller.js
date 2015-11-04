@@ -44,6 +44,7 @@ class ProjectBoardController {
         var stateId = lane.attr('id');
         this.projectService.changeTaskState(this.project, taskId, stateId).then(() => {
             this.$scope.$apply();
+            console.log('Task ' + taskId + ' moved to state ' + stateId + '.\n' + angular.toJson(this.project.tasks, true));
         });
     }
 

@@ -17,6 +17,10 @@ class ProjectService {
         return this.backend.getProject(projectId);
     }
 
+    getSprints(project) {
+        return this.projectUtils.getSprints(project);
+    }
+
     getTasksOfBacklog(project) {
         return this.projectUtils.getTasksOfBacklog(project);
     }

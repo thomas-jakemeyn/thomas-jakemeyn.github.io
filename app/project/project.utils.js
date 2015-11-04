@@ -24,8 +24,6 @@ class ProjectUtils {
         var task = tasks.splice(taskIndex, 1)[0];
         task.sprint = sprintId;
         this.insertNewTask(project, task, nextTaskId, sprintId);
-        console.log('Task \'' + taskId + '\' moved to sprint \'' + sprintId + '\', before task \'' + nextTaskId + '\'.\n'
-                + this.stringify(tasks));
     }
 
     /**
@@ -38,8 +36,6 @@ class ProjectUtils {
     changeTaskState(project, taskId, stateId) {
         var task = this.findTask(project, taskId);
         task.state = stateId;
-        console.log('Task \'' + taskId + '\' moved to state \'' + stateId + '\'.\n'
-                + this.stringify(project.tasks));
     }
 
     /**
@@ -60,8 +56,6 @@ class ProjectUtils {
         var tasks = project.tasks;
         var toIndex = this.computeNewTaskIndex(project, nextTaskId, sprintId);
         tasks.splice(toIndex, 0, task);
-        console.log('New task ' + task.id + ' inserted in sprint \'' + sprintId + '\', before task \'' + nextTaskId + '\'.\n'
-                + this.stringify(project.tasks));
     }
 
     computeNewTaskIndex(project, nextTaskId, sprintId) {
@@ -97,11 +91,14 @@ class ProjectUtils {
                 this.moveTaskToTopOfBacklog(project, task.id);
             }
         });
-        console.log('Sprint ' + sprintId + ' completed.\n' + this.stringify(project));
     }
 
     moveTaskToTopOfBacklog(project, taskId) {
         this.changeTaskPriority(project, taskId, this.findFirstTaskOfBacklog(project));
+    }
+
+    getSprints(project) {
+        return project.sprints.filter(sprint => !sprint.completed);
     }
 
     getTasksOfBacklog(project) {
