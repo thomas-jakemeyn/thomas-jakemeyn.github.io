@@ -34,6 +34,7 @@ class ProjectViewController {
             title: 'This is a test story!'
         };
         this.projectService.createTask(this.project, data, null, sprintId).then(task => {
+            this.$scope.$apply();
             this.$scope.$broadcast('task-created', task);
             console.log('Task ' + task.id + ' created in sprint ' + sprintId + '.\n' + angular.toJson(this.project.tasks, true));
         });
@@ -41,6 +42,7 @@ class ProjectViewController {
 
     completeSprint(sprintId) {
         this.projectService.completeSprint(this.project, sprintId).then(() => {
+            this.$scope.$apply();
             console.log('Sprint ' + sprintId + ' completed.\n' + angular.toJson(this.project, true));
         });
     }
