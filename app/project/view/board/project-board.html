@@ -1,8 +1,7 @@
 <div ng-repeat="sprint in getSprints()">
     <h2>{{sprint.title}}</h2>
-    <a ng-click="createTask(sprint.id)">Create task</a>
-    <a ng-click="completeSprint(sprint.id)">Complete sprint</a>
 
+    <div sprint-actions></div>
     <div class="board">
         <div ng-repeat="state in project.flow.states">
             <div class="lane-title">{{state}}</div>

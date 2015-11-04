@@ -1,8 +1,7 @@
 <div ng-repeat="sprint in getSprints()">
     <h2>{{sprint.title}}</h2>
-    <a ng-click="createTask(sprint.id)">Create task</a>
-    <a ng-click="completeSprint(sprint.id)">Complete sprint</a>
 
+    <div sprint-actions></div>
     <div id="{{sprint.id}}" class="sprint" dragula="'droppable'" dragula-scope="$parent">
         <div ng-repeat="sprintTask in getTasksOfSprint(sprint.id)"
              ng-bind="sprintTask.title"
@@ -13,7 +12,7 @@
 </div>
 
 <h2>Backlog</h2>
-<a ng-click="createTask()">Create task</a>
+<div sprint-actions></div>
 <div class="backlog" dragula="'droppable'">
     <div ng-repeat="backlogTask in getTasksOfBacklog()"
          ng-bind="backlogTask.title"
