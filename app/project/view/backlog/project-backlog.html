@@ -20,3 +20,13 @@
          id="{{backlogTask.id}}"
          class="task"></div>
 </div>
+
+<div ng-show="project.completed.length > 0">
+    <h3>Completed</h3>
+    <div class="completed">
+        <div ng-repeat="completedTask in project.completed"
+             ng-bind="completedTask.title"
+             title="{{completedTask.title}}"
+             class="task"></div>
+    </div>
+</div>

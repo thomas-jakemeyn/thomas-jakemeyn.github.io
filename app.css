@@ -22,16 +22,19 @@
     margin-top: 10px;
 }
 
-.sprint, .backlog, .board .lane {
-    min-height: 50px;
+.sprint, .backlog, .completed, .board .lane {
     margin: 0 15px 15px 15px;
     padding: 6px;
-    background-color: #ddd;
-    border: 1px solid #e7e7e7;
 }
 
-.sprint, .backlog {
-    width: calc(100% - 20px);
+.sprint, .backlog, .completed {
+    width: calc(100% - 30px);
+}
+
+.sprint, .backlog, .board .lane {
+    min-height: 50px;
+    background-color: #ddd;
+    border: 1px solid #e7e7e7;
 }
 
 .sprint-actions {
@@ -53,19 +56,19 @@
     background-color: #eee;
 }
 
-.board .lane .task-container, .board .lane .task, .sprint .task, .backlog .task {
+.board .lane .task-container, .board .lane .task, .sprint .task, .backlog .task, .completed .task {
     background-color: white;
     height: 50px;
 }
 
-.board .lane .task, .sprint .task, .backlog .task {
+.board .lane .task, .sprint .task, .backlog .task, .completed .task {
     padding: 6px;
     border: 1px solid #999;
     color: #777;
     overflow: hidden;
 }
 
-.board .lane .task-container, .sprint .task, .backlog .task {
+.board .lane .task-container, .sprint .task, .backlog .task, .completed .task {
     margin: 6px;
     background-color: white;
 }
