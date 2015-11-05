@@ -1,6 +1,13 @@
 # Scrum Light
 [Scrum Light](http://thomas-jakemeyn.github.io/) is a proof-of-concept of an electronic SCRUM board.
-It is a frontend application only, there is no backend (and no persistence).
+It is a frontend application only, there is no backend (and no persistence). Currently, it allows you to
+* select an existing project (there is only one for the moment: *scrum-light-mvp*)
+* view the tasks of that project, ordered by priority descending (sprint tasks, backlog tasks and completed tasks)
+* change the priority of a task and assign it to a sprint (with drag & drop)
+* add a new task to the backlog or to a sprint
+* view the progress of the development in a SCRUM board with 4 lanes: *to do*,  *in progress*, *resolved*, *done* (the states are configurable per project)
+* update the progress by changing the status of a task in the SCRUM board (with drag & drop, the transitions are configurable per project)
+* complete a sprint (the tasks which are not yet completed are sent back to the top of the backlog, they keep their current state)
 
 The following technologies are used:
 * [EcmaScript 6](http://es6-features.org/), transpiled by Babel
