@@ -1,3 +1,9 @@
+<div ng-if="getSprints().length === 0">
+    <br>
+    <div class="alert alert-info" role="alert">
+        There is no ongoing sprint.
+    </div>
+</div>
 <div ng-repeat="sprint in getSprints()">
     <h3>{{sprint.title}}</h3>
 
