@@ -1,4 +1,4 @@
-# scrum-light
+# Scrum Light
 [Scrum Light](http://thomas-jakemeyn.github.io/) is a proof-of-concept of an electronic SCRUM board.
 It is a frontend application only, there is no backend (and no persistence).
 
