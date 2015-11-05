@@ -94,7 +94,7 @@ class ProjectUtils {
     }
 
     moveTaskToTopOfBacklog(project, taskId) {
-        this.changeTaskPriority(project, taskId, this.findFirstTaskOfBacklog(project));
+        this.changeTaskPriority(project, taskId, this.findFirstTaskOfBacklog(project).id);
     }
 
     getSprints(project) {
