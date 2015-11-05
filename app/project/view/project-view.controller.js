@@ -33,8 +33,8 @@ class ProjectViewController {
 
     createTask(sprintId) {
         var dialog = this.$uibModal.open({
-            templateUrl: 'app/project/view/task/task-creation-form.html',
-            controller: 'TaskCreationFormController',
+            templateUrl: 'app/project/view/actions/create-task/create-task-form.html',
+            controller: 'CreateTaskFormController',
             animation: true,
             size: 'lg'
         });

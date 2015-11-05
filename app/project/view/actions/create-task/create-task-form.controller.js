@@ -1,6 +1,6 @@
 'use strict';
 
-class TaskCreationFormController {
+class CreateTaskFormController {
 
     constructor($scope, $uibModalInstance) {
         this.$scope = $scope;
@@ -20,4 +20,4 @@ class TaskCreationFormController {
     }
 }
 
-export default ['$scope', '$uibModalInstance', TaskCreationFormController];
+export default ['$scope', '$uibModalInstance', CreateTaskFormController];
