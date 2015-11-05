@@ -22,6 +22,14 @@
     margin-top: 10px;
 }
 
+.main-bar {
+    background-color: #337ab7;
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-default .navbar-brand {
+    color: #eee;
+}
+
 .sprint, .backlog, .completed, .board .lane {
     margin: 0 15px 15px 15px;
     padding: 6px;
