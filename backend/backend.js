@@ -23,21 +23,71 @@ class API {
     getProject(projectId) {
         var sprints = [{
             id: this.generateId(),
-            title: 'Sprint 1',
+            title: 'Sprint 1: Bootstrapping',
+            completed: true
+        }, {
+            id: this.generateId(),
+            title: 'Sprint 2: Proof-of-Concept',
             completed: false
         }, {
             id: this.generateId(),
-            title: 'Sprint 2',
+            title: 'Sprint 3: Minium Viable Product',
             completed: false
+        }];
+        var completed = [{
+            id: this.generateId(),
+            title: 'Gather requirements and create backlog (on a sheet of paper)',
+            state: 'done',
+            sprint: sprints[0].id
+        }, {
+            id: this.generateId(),
+            title: 'Design domain model',
+            state: 'done',
+            sprint: sprints[0].id
+        }, {
+            id: this.generateId(),
+            title: 'Create UI mockups',
+            state: 'done',
+            sprint: sprints[0].id
+        }, {
+            id: this.generateId(),
+            title: 'Set up project structure, frameworks and libraries',
+            state: 'done',
+            sprint: sprints[0].id
         }];
         var tasks = [{
             id: this.generateId(),
             title: 'As a user, I want to see a basic SCRUM board',
-            state: 'toDo',
-            sprint: sprints[0].id
+            state: 'done',
+            sprint: sprints[1].id
         }, {
             id: this.generateId(),
-            title: 'As a user, I want to create a new story',
+            title: 'As a user, I want to see the backlog and the sprints',
+            state: 'done',
+            sprint: sprints[1].id
+        }, {
+            id: this.generateId(),
+            title: 'As a user, I want to create a new task',
+            state: 'done',
+            sprint: sprints[1].id
+        }, {
+            id: this.generateId(),
+            title: 'As a user, I want to complete a sprint',
+            state: 'resolved',
+            sprint: sprints[1].id
+        }, {
+            id: this.generateId(),
+            title: 'As a user, I want to create a sprint',
+            state: 'toDo',
+            sprint: sprints[2].id
+        }, {
+            id: this.generateId(),
+            title: 'As a user, I want to create a project',
+            state: 'toDo',
+            sprint: sprints[2].id
+        }, {
+            id: this.generateId(),
+            title: 'As a system, I want to persist projects',
             state: 'toDo'
         }];
         var flow = {
@@ -53,8 +103,8 @@ class API {
             id: projectId,
             title: 'scrum-light-mvp',
             sprints: sprints,
+            completed: completed,
             tasks: tasks,
-            completed: [],
             flow: flow
         });
     }

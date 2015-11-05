@@ -53,7 +53,7 @@
 }
 
 .sprint.over, .backlog.over, .board .lane .task-container.over {
-    background-color: #eee;
+    background-color: #5cb85c;
 }
 
 .board .lane .task-container, .board .lane .task, .sprint .task, .backlog .task, .completed .task {
@@ -71,6 +71,10 @@
 .board .lane .task-container, .sprint .task, .backlog .task, .completed .task {
     margin: 6px;
     background-color: white;
+}
+
+.board .lane .task-container {
+    background-color: #f5f5f5;
 }
 
 .board .lane .task:hover, .sprint .task:hover, .backlog .task:hover {
