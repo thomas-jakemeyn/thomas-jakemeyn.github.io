@@ -12,7 +12,7 @@ The following technologies are used:
 * [dragula](https://github.com/bevacqua/angular-dragula), for drag & drop
 
 For local development, you will have to install the following tools.
-* [NodeJS](https://nodejs.org/en/), because we need [NPM](https://www.npmjs.com/) to resolve some dependencies 
+* [NodeJS](https://nodejs.org/en/), because [NPM](https://www.npmjs.com/) is needed to resolve some dependencies 
 * [jspm-cli](https://github.com/jspm/jspm-cli), for package management (*npm install jspm -g*)
 * [gulp](http://gulpjs.com/), for serving the project (*npm install gulp -g*)
 
