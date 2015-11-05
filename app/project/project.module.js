@@ -9,6 +9,7 @@ import ProjectViewController from './view/project-view.controller';
 import ProjectBacklogController from './view/backlog/project-backlog.controller';
 import ProjectBoardController from './view/board/project-board.controller';
 import CreateTaskFormController from './view/actions/create-task/create-task-form.controller';
+import CompleteSprintFormController from './view/actions/complete-sprint/complete-sprint-form.controller';
 import sprintActionsDirective from './view/actions/sprint-actions';
 
 var name = 'project';
@@ -23,6 +24,7 @@ function configure() {
             .controller('ProjectBacklogController', ProjectBacklogController)
             .controller('ProjectBoardController', ProjectBoardController)
             .controller('CreateTaskFormController', CreateTaskFormController)
+            .controller('CompleteSprintFormController', CompleteSprintFormController)
             .directive(sprintActionsDirective.name, sprintActionsDirective.factory);
 }
 

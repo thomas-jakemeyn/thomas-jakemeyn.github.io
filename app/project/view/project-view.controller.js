@@ -48,8 +48,16 @@ class ProjectViewController {
     }
 
     completeSprint(sprintId) {
-        this.projectService.completeSprint(this.project, sprintId).then(() => {
-            this.$scope.$apply();
+        var dialog = this.$uibModal.open({
+            templateUrl: 'app/project/view/actions/complete-sprint/complete-sprint-form.html',
+            controller: 'CompleteSprintFormController',
+            animation: true,
+            size: 'md'
+        });
+
+        dialog.result.then(() => {
+            return this.projectService.completeSprint(this.project, sprintId);
+        }).then(() => {
             console.log('Sprint ' + sprintId + ' completed.\n' + angular.toJson(this.project, true));
         });
     }
