@@ -310,5 +310,5 @@ MIT
 [16]: #css
 [17]: https://dragula-slackin.herokuapp.com/badge.svg
 [18]: https://bevacqua.github.io/dragula/
-[19]: https://rawgit.com/bevacqua/dragula/master/resources/patreon.svg
+[19]: https://cdn.jsdelivr.net/gh/bevacqua/dragula@master/resources/patreon.svg
 [20]: https://patreon.com/bevacqua
